@@ -168,18 +168,22 @@ class BotKicker {
 		if(null === $this->useragents) { $this->setUserAgentsFromFiles([self::DEFAULT_USERAGENTS]); }
 
 		# Detect if current user agent is in black list
-		foreach ($this->useragents as $useragent) {
-			$quote = preg_quote($useragent, '`');
-			if(preg_match("`$quote`i", $this->useragent)) {
-				return new Status(false, $this->useragent, $useragent);
+		if($this->useragent) {
+			foreach ($this->useragents as $useragent) {
+				$quote = preg_quote($useragent, '`');
+				if(preg_match("`$quote`i", $this->useragent)) {
+					return new Status(false, $this->useragent, $useragent);
+				}
 			}
 		}
 
 		# Detect if current referer is in black list
-		foreach ($this->referers as $referer) {
-			$quote = preg_quote($referer, '`');
-			if(preg_match("`$quote`i", $this->referer)) {
-				return new Status(false, $this->referer, $referer);
+		if($this->referer) {
+			foreach ($this->referers as $referer) {
+				$quote = preg_quote($referer, '`');
+				if(preg_match("`$quote`i", $this->referer)) {
+					return new Status(false, $this->referer, $referer);
+				}
 			}
 		}
 
