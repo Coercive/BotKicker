@@ -19,21 +19,21 @@ class Status {
 	/** @var string Current check */
 	private $current = '';
 
-	/** @var array Current blacklist element that trigger error */
-	private $black = '';
+	/** @var array Current list elements that match */
+	private $list = [];
 
 	/**
 	 * Status constructor.
 	 *
 	 * @param bool $state
 	 * @param string $current [optional]
-	 * @param string $black [optional]
+	 * @param array $list [optional]
 	 */
-	public function __construct(bool $state, string $current = '', string $black = '')
+	public function __construct(bool $state, string $current = '', array $list = [])
 	{
 		$this->state = $state;
 		$this->current = $current;
-		$this->black = $black;
+		$this->list = $list;
 	}
 
 	/**
@@ -53,11 +53,11 @@ class Status {
 	}
 
 	/**
-	 * @return string
+	 * @return array
 	 */
-	public function getBlack(): string
+	public function getList(): array
 	{
-		return $this->black;
+		return $this->list;
 	}
 
 }

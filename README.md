@@ -15,7 +15,8 @@ Load
 use Coercive\Security\BotKicker;
 
 # Get Instance
-$bot = new BotKicker;
+$bot = new UserAgentKicker;
+// or $bot = new RefererKicker;
 
 # Detect bot
 if(!$bot->detect()->getStatus()) {
@@ -23,29 +24,31 @@ if(!$bot->detect()->getStatus()) {
 }
 
 # You can set your own list
-$bot->setCustomReferers([
+$bot->setBlackList([
 	'bad',
-	'badtoo'
+	'bad too'
 ]);
-$bot->setCustomUserAgents([
-	'bad',
-	'badtoo'
+$bot->setWhiteList([
+	'good',
+	'good too'
 ]);
 
 # Or from file
-$bot->setReferersFromFiles([
+$bot->setBlackListFromFiles([
 	'/path/file.json',
 	'/path/file.yml',
 	'/path/file.yaml'
 ]);
-$bot->setUserAgentsFromFiles([
+$bot->setWhiteListFromFiles([
 	'/path/file.json',
 	'/path/file.yml',
 	'/path/file.yaml'
 ]);
 
 # You can override base detection
-$bot->setReferer('this is my current referer');
-$bot->setUserAgent('this is my current user agent');
+$bot->setCurrent('this is my current referer');
+
+# You can (dis)allow empty current detection
+$bot->allowEmpty( true | false );
 
 ```
