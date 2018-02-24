@@ -1,5 +1,5 @@
-Coercive Security Xss
-=====================
+Coercive Security BotKicker
+===========================
 
 A simple detection based on black list
 

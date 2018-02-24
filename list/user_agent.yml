@@ -38,6 +38,7 @@
 - Go-Ahead-Got-It
 - Go!Zilla
 - grab
+- Grabber
 - GrabNet
 - Grafula
 - GT::WWW
@@ -67,6 +68,7 @@
 - LeechFTP
 - libwww
 - libwww-perl
+- LinkedInBot
 - LinksManager\.com_bot
 - linkwalker
 - lwp-trivial
@@ -89,6 +91,7 @@
 - NetZIP
 - nutch
 - Octopus
+- Olbico
 - Offline Explorer
 - Offline Navigator
 - PageGrabber
@@ -104,15 +107,19 @@
 - psbot
 - purebot
 - pycurl
+- Python
+- Python-urllib
 - RealDownload
 - ReGet
 - Rippers 0
 - SBIder
+- ScooperBot
 - SeaMonkey
 - sitecheck\.internetseer\.com
 - SiteSnagger
 - skygrid
 - SmartDownload
+- Snapshot
 - Snoopy
 - Steeler
 - sucker
@@ -156,6 +163,7 @@
 - Xaldon WebSpider
 - Yandex
 - Zeus
+- zgrab
 - zmeu
 - zermelo
 - ZyBorg
