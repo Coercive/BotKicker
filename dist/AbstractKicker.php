@@ -143,7 +143,7 @@ abstract class AbstractKicker
 	 */
 	public function getBlackList(): array
 	{
-		return $this->blacklist;
+		return $this->blacklist ?: [];
 	}
 
 	/**
@@ -165,7 +165,7 @@ abstract class AbstractKicker
 	 */
 	public function getWhiteList(): array
 	{
-		return $this->whitelist;
+		return $this->whitelist ?: [];
 	}
 
 	/**
