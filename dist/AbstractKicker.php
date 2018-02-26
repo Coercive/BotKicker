@@ -221,6 +221,6 @@ abstract class AbstractKicker
 		}
 
 		# No bl it's ok
-		return new Status(true);
+		return new Status(true, $this->current);
 	}
 }
