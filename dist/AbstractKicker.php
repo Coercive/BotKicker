@@ -62,7 +62,7 @@ abstract class AbstractKicker
 			while (false !== ($buffer = fgets($resource, 256))) {
 				$item = trim($buffer);
 				if(!$item || strpos($item, '#') === 0) { continue; }
-				$datas[] = $buffer;
+				$datas[] = $item;
 			}
 
 			# Fail to parse datas : reinit
