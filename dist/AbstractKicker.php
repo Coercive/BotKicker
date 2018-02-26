@@ -210,13 +210,13 @@ abstract class AbstractKicker
 			return new Status($this->empty);
 		}
 
-		# Detect if current referer is in white list
-		if($this->current && $this->whitelist && ($list = $this->match($this->current, $this->whitelist))) {
+		# Detect if current haystack is in white list
+		if($this->whitelist && ($list = $this->match($this->current, $this->whitelist))) {
 			return new Status(true, $this->current, $list);
 		}
 
-		# Detect if current referer is in black list
-		if($this->current && $this->blacklist && ($list = $this->match($this->current, $this->blacklist))) {
+		# Detect if current haystack is in black list
+		if($this->blacklist && ($list = $this->match($this->current, $this->blacklist))) {
 			return new Status(false, $this->current, $list);
 		}
 
