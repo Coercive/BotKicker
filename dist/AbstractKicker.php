@@ -27,8 +27,14 @@ abstract class AbstractKicker
 	/** @var array|null */
 	protected $blacklist = null;
 
+	/** @var array */
+	protected $custom_bl = [];
+
 	/** @var array|null */
 	protected $whitelist = null;
+
+	/** @var array */
+	protected $custom_wl = [];
 
 	/**
 	 * GET DATA FROM FILE
@@ -125,6 +131,16 @@ abstract class AbstractKicker
 	}
 
 	/**
+	 * Get current haystack
+	 *
+	 * @return $this
+	 */
+	public function getCurrent(): string
+	{
+		return $this->current;
+	}
+
+	/**
 	 * Set a custom black list from array
 	 *
 	 * @param array $list
@@ -143,7 +159,19 @@ abstract class AbstractKicker
 	 */
 	public function getBlackList(): array
 	{
-		return $this->blacklist ?: [];
+		return array_merge($this->blacklist ?: [], $this->custom_bl);
+	}
+
+	/**
+	 * Add to black list
+	 *
+	 * @param array $list
+	 * @return $this
+	 */
+	public function addToBlackList(array $list)
+	{
+		$this->custom_bl = array_merge_recursive($this->custom_bl, $list);
+		return $this;
 	}
 
 	/**
@@ -165,7 +193,19 @@ abstract class AbstractKicker
 	 */
 	public function getWhiteList(): array
 	{
-		return $this->whitelist ?: [];
+		return array_merge($this->whitelist ?: [], $this->custom_wl);
+	}
+
+	/**
+	 * Add to white list
+	 *
+	 * @param array $list
+	 * @return $this
+	 */
+	public function addToWhiteList(array $list)
+	{
+		$this->custom_wl = array_merge_recursive($this->custom_wl, $list);
+		return $this;
 	}
 
 	/**
@@ -211,12 +251,12 @@ abstract class AbstractKicker
 		}
 
 		# Detect if current haystack is in white list
-		if($this->whitelist && ($list = $this->match($this->current, $this->whitelist))) {
+		if($this->whitelist && ($list = $this->match($this->current, $this->getWhiteList()))) {
 			return new Status(true, $this->current, $list);
 		}
 
 		# Detect if current haystack is in black list
-		if($this->blacklist && ($list = $this->match($this->current, $this->blacklist))) {
+		if($this->blacklist && ($list = $this->match($this->current, $this->getBlackList()))) {
 			return new Status(false, $this->current, $list);
 		}
 
