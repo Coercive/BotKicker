@@ -251,12 +251,14 @@ abstract class AbstractKicker
 		}
 
 		# Detect if current haystack is in white list
-		if($this->whitelist && ($list = $this->match($this->current, $this->getWhiteList()))) {
+		$wl = $this->getWhiteList();
+		if($wl && ($list = $this->match($this->current, $wl))) {
 			return new Status(true, $this->current, $list);
 		}
 
 		# Detect if current haystack is in black list
-		if($this->blacklist && ($list = $this->match($this->current, $this->getBlackList()))) {
+		$bl = $this->getBlackList();
+		if($bl && ($list = $this->match($this->current, $bl))) {
 			return new Status(false, $this->current, $list);
 		}
 
