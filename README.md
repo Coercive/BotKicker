@@ -16,6 +16,18 @@ Get
 composer require coercive/botkicker
 ```
 
+List infos
+----------
+
+- PERISHABLE PRESS ULTIMATE USER-AGENT BLACKLIST 
+https://perishablepress.com/4g-ultimate-user-agent-blacklist/
+
+- PERISHABLE PRESS ULTIMATE REFERRER BLACKLIST 
+https://perishablepress.com/4g-ultimate-referrer-blacklist/
+
+- CHONGQED REFERER BLACKLIST 
+http://blacklist.chongqed.org/
+
 Load
 ----
 ```php
