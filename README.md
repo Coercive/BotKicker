@@ -52,16 +52,14 @@ $bot->setWhiteList([
 	'good too'
 ]);
 
-# Or from file
+# Or from file (txt brut format)
 $bot->setBlackListFromFiles([
-	'/path/file.json',
-	'/path/file.yml',
-	'/path/file.yaml'
+	'/path/file1',
+	'/path/file2'
 ]);
 $bot->setWhiteListFromFiles([
-	'/path/file.json',
-	'/path/file.yml',
-	'/path/file.yaml'
+	'/path/file1',
+	'/path/file2'
 ]);
 
 # You can override base detection
