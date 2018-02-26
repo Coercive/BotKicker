@@ -13,7 +13,10 @@ namespace Coercive\Security\BotKicker;
  */
 class UserAgentKicker extends AbstractKicker
 {
-	const DEFAULT_FILE = __DIR__ . '/../list/user_agent.yml';
+	const DEFAULT_FILES = [
+		__DIR__ . '/../list/useragent/coercive',
+		__DIR__ . '/../list/useragent/perishable',
+	];
 
 	/**
 	 * UserAgentKicker constructor.
@@ -21,7 +24,6 @@ class UserAgentKicker extends AbstractKicker
 	public function __construct()
 	{
 		$this->current = $_SERVER['HTTP_USER_AGENT'] ?? '';
-		$this->default = [self::DEFAULT_FILE];
+		$this->default = self::DEFAULT_FILES;
 	}
-
 }

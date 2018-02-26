@@ -13,7 +13,11 @@ namespace Coercive\Security\BotKicker;
  */
 class RefererKicker extends AbstractKicker
 {
-	const DEFAULT_FILE = __DIR__ . '/../list/referer.yml';
+	const DEFAULT_FILES = [
+		__DIR__ . '/../list/referer/chongqed',
+		__DIR__ . '/../list/referer/coercive',
+		__DIR__ . '/../list/referer/perishable',
+	];
 
 	/**
 	 * RefererKicker constructor.
@@ -21,7 +25,6 @@ class RefererKicker extends AbstractKicker
 	public function __construct()
 	{
 		$this->current = $_SERVER['HTTP_REFERER'] ?? '';
-		$this->default = [self::DEFAULT_FILE];
+		$this->default = self::DEFAULT_FILES;
 	}
-
 }

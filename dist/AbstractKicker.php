@@ -2,7 +2,6 @@
 namespace Coercive\Security\BotKicker;
 
 use Exception;
-use Symfony\Component\Yaml\Parser as YamlParser;
 
 /**
  * BOT KICKER
@@ -14,8 +13,8 @@ use Symfony\Component\Yaml\Parser as YamlParser;
  * @copyright   (c) 2018 Anthony Moral
  * @license 	MIT
  */
-abstract class AbstractKicker {
-
+abstract class AbstractKicker
+{
 	/** @var array Default file list */
 	protected $default = [];
 
@@ -40,42 +39,42 @@ abstract class AbstractKicker {
 	 * @return array
 	 * @throws Exception
 	 */
-	protected function getDataFromFile(array $paths): array
+	protected function getDataFromFiles(array $paths): array
 	{
 		# No path
 		if(!$paths) { throw new Exception('No Yaml files found'); }
 
 		# Retrieve list
 		$list = [];
-		$yaml = new YamlParser;
 		foreach ($paths as $path) {
 
 			# No File : Skip
 			if(!is_file($path)) { throw new Exception("File does not exist : $path"); }
 
-			# Type
-			preg_match('`\.(?P<type>json|yml|yaml)$`i', $path, $matches);
-			$type = $matches['type'] ?? '';
+			# Init empty datas
+			$datas = [];
 
-			# Process file type
-			switch ($type) {
+			# Load file
+			$resource = @fopen($path, 'r');
+			if(!$resource) { return $datas; }
 
-				case 'json':
-					$data = json_decode(file_get_contents($path));
-					break;
-
-				case 'yml':
-				case 'yaml':
-					$data = $yaml->parse(file_get_contents($path));
-					break;
-
-				default:
-					throw new Exception("Unknowed file type : $type");
-
+			# Parse
+			while (false !== ($buffer = fgets($resource, 256))) {
+				$item = trim($buffer);
+				if(!$item || strpos($item, '#') === 0) { continue; }
+				$datas[] = $buffer;
 			}
 
+			# Fail to parse datas : reinit
+			if (!feof($resource)) {
+				$datas = [];
+			}
+
+			# Close resource
+			fclose($resource);
+
 			# Merge
-			$list = array_merge_recursive($list, $data);
+			$list = array_merge_recursive($list, $datas);
 		}
 
 		# Return the full list
@@ -138,6 +137,16 @@ abstract class AbstractKicker {
 	}
 
 	/**
+	 * Get black list as array
+	 *
+	 * @return array
+	 */
+	public function getBlackList(): array
+	{
+		return $this->blacklist;
+	}
+
+	/**
 	 * Set a custom white list from array
 	 *
 	 * @param array $list
@@ -150,6 +159,16 @@ abstract class AbstractKicker {
 	}
 
 	/**
+	 * Get white list as array
+	 *
+	 * @return array
+	 */
+	public function getWhiteList(): array
+	{
+		return $this->whitelist;
+	}
+
+	/**
 	 * Set a black list from files list
 	 *
 	 * @param array $paths
@@ -158,7 +177,7 @@ abstract class AbstractKicker {
 	 */
 	public function setBlackListFromFiles(array $paths)
 	{
-		$this->blacklist = $this->getDataFromFile($paths);
+		$this->blacklist = $this->getDataFromFiles($paths);
 		return $this;
 	}
 
@@ -171,7 +190,7 @@ abstract class AbstractKicker {
 	 */
 	public function setWhiteListFromFiles(array $paths)
 	{
-		$this->whitelist = $this->getDataFromFile($paths);
+		$this->whitelist = $this->getDataFromFiles($paths);
 		return $this;
 	}
 
@@ -204,5 +223,4 @@ abstract class AbstractKicker {
 		# No bl it's ok
 		return new Status(true);
 	}
-
 }
