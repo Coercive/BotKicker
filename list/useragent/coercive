@@ -126,8 +126,11 @@ lwp-trivial
 Mass Downloader
 Maxthon
 MFC_Tear_Sample
+Microsoft Office Existence Discovery
+Microsoft Office Protocol Discovery
 microsoft\.url
 Microsoft URL Control
+Microsoft-WebDAV-MiniRedir
 MIDown tool
 miner
 Missigua Locator
@@ -142,9 +145,10 @@ NetSpider
 NetZIP
 nutch
 Octopus
-Olbico
+OfficeLiveConnector
 Offline Explorer
 Offline Navigator
+Olbico
 PageGrabber
 panscient\.com
 Papa Foto
@@ -193,6 +197,7 @@ WebAuto
 WebBandit
 webbandit
 WebCopier
+WebDAV
 WebFetch
 WebGo IS
 WebLeacher
