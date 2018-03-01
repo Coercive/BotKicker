@@ -52,6 +52,9 @@ administrator
 adscanner
 Acunetix
 Akregator
+archive
+archive\.org
+archive\.org_bot
 Baiduspider
 Barkrowler
 batch
@@ -241,6 +244,7 @@ URI::Fetch
 urllib
 vikspider
 VoidEYE
+Wayback Machine Live Record
 Web Image Collector
 Web Sucker
 webalta
