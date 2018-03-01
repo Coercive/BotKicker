@@ -1,6 +1,8 @@
 # PERISHABLE PRESS ULTIMATE USER-AGENT BLACKLIST
 # https://perishablepress.com/4g-ultimate-user-agent-blacklist/
 
+# WARNING : Some items in this list have been removed due to too large or ambiguous detections
+
 _iRc
 _Works
 @\$x
