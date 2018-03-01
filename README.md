@@ -28,6 +28,11 @@ https://perishablepress.com/4g-ultimate-referrer-blacklist/
 - CHONGQED REFERER BLACKLIST 
 http://blacklist.chongqed.org/
 
+Warning info
+------------
+
+Some terms where placed in ambiguous list because of too large detection. You can find this ambiguous file are in each list directory. (work in progress)
+
 Load
 ----
 ```php
