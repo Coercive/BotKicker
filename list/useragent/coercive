@@ -131,6 +131,7 @@ HMView
 HTTP::Lite
 HTTrack
 ia_archiver
+IABot
 id-search
 id-search\.org
 IDBot
@@ -140,6 +141,7 @@ Indy Library
 infegy
 InterGET
 Internet Ninja
+InternetArchiveBot
 InternetSeer\.com
 IRLbot
 ISC Systems iRc Search 2\.1
@@ -280,6 +282,8 @@ Wells Search II
 webmaster
 WEP Search
 Widow
+wikimedia\.org
+Wikipedia
 WWW-Mechanize
 WWWOFFLE
 Xaldon WebSpider
