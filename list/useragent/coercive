@@ -70,6 +70,7 @@ BOT for JCE
 browserproxy
 casper
 CazoodleBot
+CFNetwork
 checkprivacy
 ChinaClaw
 cliqz\.com
@@ -136,6 +137,7 @@ HTTP::Lite
 HTTrack
 ia_archiver
 IABot
+iCoreService
 id-search
 id-search\.org
 IDBot
@@ -256,6 +258,7 @@ trendictionbot0
 turnit
 TurnitinBot
 TweetmemeBot
+unknown
 URI::Fetch
 urllib
 vikspider
