@@ -265,6 +265,7 @@ Python-urllib
 RealDownload
 ReGet
 Rippers 0
+^RSS$
 RSSOwl
 Ruby
 SBIder
