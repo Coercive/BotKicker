@@ -29,7 +29,6 @@ disconnect
 disconnectHandlers
 display_errors
 DOCUMENT_ROOT
-echo
 eval
 feed_url
 file_put_contents
