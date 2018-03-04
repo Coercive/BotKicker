@@ -112,6 +112,7 @@ EmailCollector
 EmailSiphon
 EmailWolf
 evc-batch
+EventMachine
 exensa\.com
 Express WebPictures
 extract
@@ -151,6 +152,7 @@ hatena
 Hatena Antenna
 heritrix
 HMView
+HttpClient
 HTTP::Lite
 HTTrack
 ia_archiver
