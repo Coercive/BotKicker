@@ -141,6 +141,7 @@ Gluten Free
 glutenfreepleasure\.com
 Go-Ahead-Got-It
 Go-http-client
+^Go [0-9\.]+ package http$
 Go!Zilla
 grab
 Grabber
