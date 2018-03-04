@@ -253,6 +253,7 @@ psbot
 purebot
 pycurl
 Python
+python-requests
 Python-urllib
 RealDownload
 ReGet
