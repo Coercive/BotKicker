@@ -170,6 +170,7 @@ hatena
 Hatena Antenna
 heritrix
 HMView
+http\.rb
 HttpClient
 HTTP::Lite
 HTTrack
