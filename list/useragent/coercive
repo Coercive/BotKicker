@@ -416,3 +416,7 @@ zgrab
 zmeu
 zermelo
 ZyBorg
+
+# SPECIAL LIST
+
+[0-9]+ subscribers?
