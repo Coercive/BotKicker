@@ -95,6 +95,7 @@ crawl
 crawler
 ^curl$
 Custo
+cyber\.law\.harvard\.edu
 DaPian
 datagnion
 datagnionbot
@@ -232,6 +233,7 @@ Maxthon
 mediatoolkit
 Mediatoolkitbot
 MetaInspector
+mediawords
 MetaURI
 metauri\.com
 MFC_Tear_Sample
