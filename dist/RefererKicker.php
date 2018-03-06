@@ -14,10 +14,14 @@ namespace Coercive\Security\BotKicker;
 class RefererKicker extends AbstractKicker
 {
 	const DEFAULT_FILES = [
-		__DIR__ . '/../list/referer/chongqed',
-		__DIR__ . '/../list/referer/coercive',
-		__DIR__ . '/../list/referer/perishable',
+		self::CHONGQED_FILE,
+		self::COERCIVE_FILE,
+		self::PERISHABLE_FILE
 	];
+
+	const CHONGQED_FILE = __DIR__ . '/../list/referer/chongqed';
+	const COERCIVE_FILE = __DIR__ . '/../list/referer/coercive';
+	const PERISHABLE_FILE = __DIR__ . '/../list/referer/perishable';
 
 	/**
 	 * RefererKicker constructor.
