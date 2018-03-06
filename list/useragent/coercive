@@ -35,7 +35,6 @@ file_put_contents
 ini_set
 set_magic_quotes_runtime
 set_time_limit
-SimplePie
 
 # Joomla!
 
@@ -329,6 +328,8 @@ semrush\.com
 SemrushBot
 SeznamBot
 ShortLinkTranslate
+SimplePie
+simplepie\.org
 sitecheck\.internetseer\.com
 Siteimprove\.com
 SiteSnagger
