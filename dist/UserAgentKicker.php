@@ -14,9 +14,13 @@ namespace Coercive\Security\BotKicker;
 class UserAgentKicker extends AbstractKicker
 {
 	const DEFAULT_FILES = [
-		__DIR__ . '/../list/useragent/coercive',
-		__DIR__ . '/../list/useragent/perishable',
+		self::COERCIVE_FILE,
+		self::PERISHABLE_FILE
 	];
+	
+	const AMBIGUOUS_FILE = __DIR__ . '/../list/useragent/ambiguous';
+	const COERCIVE_FILE = __DIR__ . '/../list/useragent/coercive';
+	const PERISHABLE_FILE = __DIR__ . '/../list/useragent/perishable';
 
 	/**
 	 * UserAgentKicker constructor.
