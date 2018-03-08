@@ -342,6 +342,7 @@ QuiteRSS
 RealDownload
 ReGet
 Rippers 0
+^robots$
 ^RSS$
 RSSOwl
 Ruby
