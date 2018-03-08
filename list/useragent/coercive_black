@@ -196,6 +196,7 @@ http\.rb
 HttpClient
 HTTP::Lite
 httpscheck
+HttpUrlConnection
 HTTrack
 HYQvod
 ia_archiver
@@ -223,6 +224,7 @@ ISC Systems iRc Search 2\.1
 istellabot
 jakarta
 Java
+Jersey
 JetCar
 JOC Web Spider
 jpbutler\.com
