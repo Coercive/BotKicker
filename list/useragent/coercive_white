@@ -1,0 +1,104 @@
+# Coercive white list
+
+# Search engine bots
+
+# Google https://support.google.com/webmasters/answer/1061943?hl=fr
+
+AdsBot-Google
+AdsBot-Google-Mobile
+AdsBot-Google-Mobile-Apps
+APIs-Google
+google\.com
+Googlebot
+Googlebot-Image
+Googlebot-Mobile
+Googlebot-News
+Googlebot-Video
+Mediapartners-Google
+
+# Microsoft Bing https://www.bing.com/webmaster/help/which-crawlers-does-bing-use-8c184ec0
+
+adidxbot
+bing\.com
+bingbot
+BingPreview
+msnbot
+msnbot-media
+
+# AOL https://aol.com
+
+aol\.com
+AOLBuild
+
+# Ask https://www.ask.com
+
+ask\.com
+Jeeves/Teoma
+Teoma
+
+# Baidu http://www.baiduguide.com/baidu-spider/
+
+Baiduspider
+Baiduspider-image
+Baiduspider-mobile
+Baiduspider-video
+Baiduspider-news
+Baiduspider-favo
+Baiduspider-cpro
+Baiduspider-ads
+
+# DoCoMo Japan Robot http://www.nttdocomo.co.jp/
+DoCoMo
+
+# DuckDuckGo https://duckduckgo.com/duckduckbot
+
+DuckDuckBot
+DuckDuckGo
+DuckDuckGo-Favicons-Bot
+
+# Yahoo! https://help.yahoo.com/kb/SLN22600.html
+
+Slurp
+Yahoo
+
+# Yandex https://yandex.com/support/webmaster/robot-workings/check-yandex-robots.xml
+
+YaDirectFetcher
+yandex
+YandexAccessibilityBot
+YandexAntivirus
+YandexBlogs
+YandexBot
+YandexCalendar
+YandexDirectDyn
+YandexImageResizer
+YandexImages
+YandexPagechecker
+YandexMedia
+YandexMetrika
+YandexMobileBot
+YandexSitelinks
+YandexVertis
+YandexVideo
+YandexWebmaster
+YandexBot.+MirrorDetector
+
+# Social Networks
+
+# FaceBook https://developers.facebook.com/docs/sharing/webmasters/crawler?locale=fr_FR
+
+facebookexternalhit
+Facebot
+
+# LinkedIn http://www.linkedin.com/
+
+LinkedInBot
+
+# Slack https://api.slack.com/robots
+
+Slackbot
+Slackbot-LinkExpanding
+Slack-ImgProxy
+
+# Twitter https://developer.twitter.com/en/docs/tweets/optimize-with-cards/guides/getting-started
+Twitterbot
