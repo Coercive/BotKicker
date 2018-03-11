@@ -28,6 +28,9 @@ https://perishablepress.com/4g-ultimate-referrer-blacklist/
 - CHONGQED REFERER BLACKLIST 
 http://blacklist.chongqed.org/
 
+- MITCHELL KROG - BlackList file from apache set
+https://github.com/mitchellkrogza
+
 Warning info
 ------------
 
