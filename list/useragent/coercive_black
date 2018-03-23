@@ -368,6 +368,8 @@ Python
 python-requests
 Python-urllib
 QuiteRSS
+RankingBot
+RankingBot2
 RateStickerBot
 RealDownload
 ReGet
@@ -467,6 +469,7 @@ UniversalFeedParser
 unknown
 URI::Fetch
 urllib
+varocarbas\.com
 vikspider
 VoidEYE
 WhatsApp
