@@ -180,6 +180,7 @@ Flipboard
 FlipboardProxy
 FlipboardRSS
 Frog
+Funnelback
 getpocket
 GetRight
 GetWeb!
@@ -374,6 +375,7 @@ riddler\.io
 Riddler
 Rippers 0
 ^robots$
+RPT-HTTPClient
 ^RSS$
 RSSOwl
 Ruby
