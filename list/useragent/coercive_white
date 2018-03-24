@@ -87,7 +87,7 @@ YandexBot.+MirrorDetector
 
 # FaceBook https://developers.facebook.com/docs/sharing/webmasters/crawler?locale=fr_FR
 
-facebookexternalhit
+facebookexternalhit(?!.+kakao)
 Facebot
 
 # LinkedIn http://www.linkedin.com/
