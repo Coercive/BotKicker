@@ -25,9 +25,6 @@ class UserAgentKicker extends AbstractKicker
 	const MITCHELLKROGZA_FILE = __DIR__ . '/../list/useragent/mitchellkrogza';
 	const PERISHABLE_FILE = __DIR__ . '/../list/useragent/perishable';
 
-	/** @var string The requested script url */
-	private $url = '';
-
 	/**
 	 * UserAgentKicker constructor.
 	 */
@@ -35,17 +32,6 @@ class UserAgentKicker extends AbstractKicker
 	{
 		$agent = $_SERVER['HTTP_USER_AGENT'] ?? '';
 		$this->currents = $agent ? [$agent] : [];
-		$this->url = $_SERVER['SCRIPT_URL'] ?? ($_SERVER['REQUEST_URI'] ?? '');
 		$this->default = self::DEFAULT_FILES;
-	}
-
-	/**
-	 * Detect if the UA request the robots.txt file
-	 *
-	 * @return bool
-	 */
-	public function requestedRobotsTxt(): bool
-	{
-		return false !== strpos($this->url, 'robots.txt');
 	}
 }

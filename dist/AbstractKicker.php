@@ -269,4 +269,15 @@ abstract class AbstractKicker
 		# No bl it's ok
 		return new Status(true, $this->currents);
 	}
+
+	/**
+	 * Detect if the robots.txt file is requested
+	 *
+	 * @return bool
+	 */
+	public function isRobotsTxtRequested(): bool
+	{
+		$url = $_SERVER['SCRIPT_URL'] ?? ($_SERVER['REQUEST_URI'] ?? '');
+		return false !== strpos($url, 'robots.txt');
+	}
 }
