@@ -216,6 +216,9 @@ GWX:RESERVED
 harvest
 hatena
 Hatena Antenna
+HatenaBookmark
+Hatena::Bookmark
+Hatena::Fetcher
 heritrix
 HMView
 HotOrBot
