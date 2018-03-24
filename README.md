@@ -43,7 +43,7 @@ Basics
 
 ```php
 # Get Instance
-$kicker = new UserAgentKicker;
+$kicker = new UserAgentKicker; // or someone else
 
 # Basic bot detection
 if(!$kicker->detect()->getStatus()) {
@@ -63,6 +63,34 @@ if($kicker->isRobotsTxtRequested()) { /* do something */ }
 ```php
 # You can (dis)allow empty current detection
 $kicker->allowEmpty( true | false );
+```
+
+HostKicker only
+---------------
+
+You can detect host name from an ip list
+
+```php
+# HostKicker only
+$kicker = new HostKicker;
+
+# Set your ip list
+$kicker->setHostFromIp( [
+	'xxx.xx.xx.x',
+	'yy.yyy.y.y',
+	'...',
+] );
+```
+
+You can use the auto IP detection from IpKicker
+
+```php
+# Get auto Ip list detection
+$list = (new IpKicker)->getCurrents();
+
+# Set auto ip list
+$kicker = new HostKicker;
+$kicker->setHostFromIp($list);
 ```
 
 Trigger on custom element
