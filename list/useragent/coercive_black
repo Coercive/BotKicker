@@ -395,6 +395,7 @@ RPT-HTTPClient
 ^RSS$
 RSSOwl
 Ruby
+Ruby\/Curb
 safarifetcherd
 \(Sage\)
 SBIder
