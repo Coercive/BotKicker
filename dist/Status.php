@@ -11,13 +11,13 @@ namespace Coercive\Security\BotKicker;
  * @copyright   (c) 2018 Anthony Moral
  * @license 	MIT
  */
-class Status {
-
+class Status
+{
 	/** @var bool BotKicker state */
 	private $state = false;
 
-	/** @var string Current check */
-	private $current = '';
+	/** @var array Current check */
+	private $currents = [];
 
 	/** @var array Current list elements that match */
 	private $list = [];
@@ -26,13 +26,13 @@ class Status {
 	 * Status constructor.
 	 *
 	 * @param bool $state
-	 * @param string $current [optional]
+	 * @param array $currents [optional]
 	 * @param array $list [optional]
 	 */
-	public function __construct(bool $state, string $current = '', array $list = [])
+	public function __construct(bool $state, array $currents = [], array $list = [])
 	{
 		$this->state = $state;
-		$this->current = $current;
+		$this->currents = $currents;
 		$this->list = $list;
 	}
 
@@ -45,11 +45,11 @@ class Status {
 	}
 
 	/**
-	 * @return string
+	 * @return array
 	 */
-	public function getCurrent(): string
+	public function getCurrents(): array
 	{
-		return $this->current;
+		return $this->currents;
 	}
 
 	/**
@@ -59,5 +59,4 @@ class Status {
 	{
 		return $this->list;
 	}
-
 }
