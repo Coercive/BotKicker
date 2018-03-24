@@ -49,7 +49,7 @@ class IpKicker extends AbstractKicker
 	}
 
 	/**
-	 * UserAgentKicker constructor.
+	 * IpKicker constructor.
 	 */
 	public function __construct()
 	{
