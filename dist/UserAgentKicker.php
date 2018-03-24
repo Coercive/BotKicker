@@ -33,7 +33,8 @@ class UserAgentKicker extends AbstractKicker
 	 */
 	public function __construct()
 	{
-		$this->currents = [$_SERVER['HTTP_USER_AGENT'] ?? ''];
+		$agent = $_SERVER['HTTP_USER_AGENT'] ?? '';
+		$this->currents = $agent ? [$agent] : [];
 		$this->url = $_SERVER['SCRIPT_URL'] ?? ($_SERVER['REQUEST_URI'] ?? '');
 		$this->default = self::DEFAULT_FILES;
 	}
