@@ -28,7 +28,7 @@ class RefererKicker extends AbstractKicker
 	 */
 	public function __construct()
 	{
-		$this->current = $_SERVER['HTTP_REFERER'] ?? '';
+		$this->currents = [$_SERVER['HTTP_REFERER'] ?? ''];
 		$this->default = self::DEFAULT_FILES;
 	}
 }
