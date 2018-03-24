@@ -21,8 +21,8 @@ abstract class AbstractKicker
 	/** @var bool Allow empty current haystack */
 	protected $empty = false;
 
-	/** @var string Current haystack for detect */
-	protected $current = '';
+	/** @var array Currents haystack for detect */
+	protected $currents = [];
 
 	/** @var array|null */
 	protected $blacklist = null;
@@ -119,25 +119,25 @@ abstract class AbstractKicker
 	}
 
 	/**
-	 * Set a custom current item for detection in list
+	 * Set custom currents items for detection in list
 	 *
-	 * @param string $name
+	 * @param array $list
 	 * @return $this
 	 */
-	public function setCurrent(string $name)
+	public function setCurrents(array $list)
 	{
-		$this->current = $name;
+		$this->currents = $list;
 		return $this;
 	}
 
 	/**
-	 * Get current haystack
+	 * Get currents haystack
 	 *
-	 * @return $this
+	 * @return array
 	 */
-	public function getCurrent(): string
+	public function getCurrents(): array
 	{
-		return $this->current;
+		return $this->currents;
 	}
 
 	/**
@@ -246,23 +246,27 @@ abstract class AbstractKicker
 		if(null === $this->blacklist && $this->default) { $this->setBlackListFromFiles($this->default); }
 
 		# (Dis)Allow empty haystack
-		if(!$this->current) {
+		if(!$this->currents) {
 			return new Status($this->empty);
 		}
 
 		# Detect if current haystack is in white list
 		$wl = $this->getWhiteList();
-		if($wl && ($list = $this->match($this->current, $wl))) {
-			return new Status(true, $this->current, $list);
+		if($wl) foreach ($this->currents as $current) {
+			if($list = $this->match($current, $wl)) {
+				return new Status(true, $this->currents, $list);
+			}
 		}
 
 		# Detect if current haystack is in black list
 		$bl = $this->getBlackList();
-		if($bl && ($list = $this->match($this->current, $bl))) {
-			return new Status(false, $this->current, $list);
+		if($bl) foreach ($this->currents as $current) {
+			if($list = $this->match($current, $bl)) {
+				return new Status(false, $this->currents, $list);
+			}
 		}
 
 		# No bl it's ok
-		return new Status(true, $this->current);
+		return new Status(true, $this->currents);
 	}
 }
