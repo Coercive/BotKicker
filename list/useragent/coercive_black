@@ -344,6 +344,7 @@ nosite\.com
 \(Not decided yet\)
 NotabilityShareExtension
 ^null$
+^\(null\)
 nutch
 Nuzzel
 OA-Indicator
