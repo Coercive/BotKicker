@@ -9,7 +9,7 @@ AdsBot-Google-Mobile
 AdsBot-Google-Mobile-Apps
 APIs-Google
 google\.com
-Googlebot
+^(?!.*Buck).*Googlebot(?!.+hypefactors)
 Googlebot-Image
 Googlebot-Mobile
 Googlebot-News
