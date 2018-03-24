@@ -499,6 +499,7 @@ UniversalFeedParser
 unknown
 URI::Fetch
 urllib
+User-Agent
 varocarbas\.com
 vikspider
 VoidEYE
