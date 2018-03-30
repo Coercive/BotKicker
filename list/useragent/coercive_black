@@ -48,6 +48,8 @@ webconfig
 
 administrator
 adscanner
+adstxtlab
+adstxtlab\.com
 Acunetix
 ahrefs\.com
 AhrefsBot
@@ -61,6 +63,8 @@ anderspink\.com
 AndersPinkBot
 Apache
 Apache-HttpClient
+appengine
+AppEngine-Google
 Applebot
 apple\.com
 Apple-PubSub
@@ -72,6 +76,8 @@ Baiduspider
 Barkrowler
 batch
 bb800\.com
+bin-co\.com
+BinGet
 binlar
 bit\.ly
 bitlybot
@@ -124,6 +130,7 @@ datasift
 deb\.sury\.org
 Default Browser 0
 deprecated
+Describebot
 diavol
 digg\.com
 Digg Deeper
@@ -190,6 +197,7 @@ FlipboardProxy
 FlipboardRSS
 Frog
 Funnelback
+G-i-g-a-b-o-t
 getpocket
 GetRight
 GetWeb!
@@ -352,9 +360,11 @@ NewShareCounts
 newsharecounts\.com
 newsify\.co
 Newsify Feed Fetcher
+newspaper
 NEWT
 Nexgate Ruby Client
 NoIcon
+NonAppStore
 nosite\.com
 \(Not decided yet\)
 NotabilityShareExtension
@@ -408,6 +418,7 @@ RankingBot
 RankingBot2
 RateStickerBot
 ReadKit
+reading\.am
 RealDownload
 Reeder
 ReGet
@@ -535,6 +546,9 @@ webbandit
 WebCopier
 WebDAV
 WebFetch
+WebGeno
+WebGeno\.me
+WebGeno\.me Research Project
 WebGo IS
 WebLeacher
 WebReaper
