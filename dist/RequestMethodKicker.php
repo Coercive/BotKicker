@@ -13,19 +13,27 @@ namespace Coercive\Security\BotKicker;
  */
 class RequestMethodKicker extends AbstractKicker
 {
-	const DEFAULT_FILES = [
-		self::COERCIVE_FILE
-	];
-
 	const COERCIVE_FILE = __DIR__ . '/../list/method/coercive';
 
 	/**
 	 * RequestMethodKicker constructor.
+	 *
+	 * @return void
 	 */
 	public function __construct()
 	{
 		$method = (string) filter_input(INPUT_SERVER, 'REQUEST_METHOD', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-		$this->currents = $method ? [$method] : [];
-		$this->default = self::DEFAULT_FILES;
+		if($method) {
+			$this->setInputList([$method]);
+		}
+	}
+
+	/**
+	 * @return $this
+	 */
+	public function loadCoerciveList(): RequestMethodKicker
+	{
+		$this->setBlackListFromFiles([self::COERCIVE_FILE]);
+		return $this;
 	}
 }

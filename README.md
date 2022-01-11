@@ -42,12 +42,21 @@ Kicker system
 Basics
 
 ```php
+use  Coercive\Security\BotKicker\UserAgentKicker;
+
 # Get Instance
-$kicker = new UserAgentKicker; // or someone else
+$kicker = new UserAgentKicker; // or othe kicker
+
+# Load a default list
+$kicker->loadCoerciveLists();
+# or load custom list...
 
 # Basic bot detection
 if(!$kicker->detect()->getStatus()) {
 	echo 'a bot is detected';
+}
+else {
+    # True if in whitelist or not in blacklist
 }
 ```
 

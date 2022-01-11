@@ -13,10 +13,6 @@ namespace Coercive\Security\BotKicker;
  */
 class IpKicker extends AbstractKicker
 {
-	const DEFAULT_FILES = [
-		self::COERCIVE_FILE,
-	];
-
 	const COERCIVE_FILE = __DIR__ . '/../list/ip/coercive';
 
 	/**
@@ -27,8 +23,8 @@ class IpKicker extends AbstractKicker
 	private function initIps()
 	{
 		# Get remote and forwarded
-		$remote = filter_input(INPUT_SERVER, 'REMOTE_ADDR', FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?: '';
-		$forwarded = filter_input(INPUT_SERVER, 'HTTP_X_FORWARDED_FOR', FILTER_SANITIZE_FULL_SPECIAL_CHARS ?: '');
+		$remote = (string) filter_input(INPUT_SERVER, 'REMOTE_ADDR', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+		$forwarded = (string) filter_input(INPUT_SERVER, 'HTTP_X_FORWARDED_FOR', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 		$list = [];
 
 		# Process forwarded ips
@@ -38,22 +34,37 @@ class IpKicker extends AbstractKicker
 			$forwarded = str_replace(' ', '', $forwarded);
 
 			# List all ips as array
-			$list = explode(',', $forwarded);
+			$list = explode(',', $forwarded) ?: [];
 		}
 
 		# Add the basic remote
-		if($remote) { $list[] = $remote; }
+		if($remote) {
+			$list[] = $remote;
+		}
 
 		# Unique and not empty
-		$this->currents = array_filter(array_unique($list));
+		$list = array_filter(array_unique($list));
+		if($list) {
+			$this->setInputList($list);
+		}
 	}
 
 	/**
 	 * IpKicker constructor.
+	 *
+	 * @return void
 	 */
 	public function __construct()
 	{
 		$this->initIps();
-		$this->default = self::DEFAULT_FILES;
+	}
+
+	/**
+	 * @return $this
+	 */
+	public function loadCoerciveList(): IpKicker
+	{
+		$this->setBlackListFromFiles([self::COERCIVE_FILE]);
+		return $this;
 	}
 }

@@ -15,26 +15,17 @@ use Exception;
  */
 abstract class AbstractKicker
 {
-	/** @var array Default file list */
-	protected $default = [];
-
 	/** @var bool Allow empty current haystack */
-	protected $empty = false;
+	protected bool $empty = false;
 
-	/** @var array Currents haystack for detect */
-	protected $currents = [];
+	/** @var array Blacklist to compare */
+	protected array $blacklist = [];
 
-	/** @var array|null */
-	protected $blacklist = null;
+	/** @var array Whitelist to compare */
+	protected array $whitelist = [];
 
-	/** @var array */
-	protected $custom_bl = [];
-
-	/** @var array|null */
-	protected $whitelist = null;
-
-	/** @var array */
-	protected $custom_wl = [];
+	/** @var array List for match */
+	protected array $inputlist = [];
 
 	/**
 	 * GET DATA FROM FILE
@@ -43,31 +34,38 @@ abstract class AbstractKicker
 	 *
 	 * @param array $paths
 	 * @return array
-	 * @throws Exception
 	 */
-	protected function getDataFromFiles(array $paths): array
+	static public function getDataFromFiles(array $paths): array
 	{
 		# No path
-		if(!$paths) { throw new Exception('No Yaml files found'); }
+		if(!$paths) {
+			return [];
+		}
 
 		# Retrieve list
 		$list = [];
 		foreach ($paths as $path) {
 
 			# No File : Skip
-			if(!is_file($path)) { throw new Exception("File does not exist : $path"); }
+			if(!is_file($path)) {
+				continue;
+			}
 
 			# Init empty datas
 			$datas = [];
 
 			# Load file
 			$resource = @fopen($path, 'r');
-			if(!$resource) { return $datas; }
+			if(!$resource) {
+				return $datas;
+			}
 
 			# Parse
 			while (false !== ($buffer = fgets($resource, 256))) {
 				$item = trim($buffer);
-				if(!$item || strpos($item, '#') === 0) { continue; }
+				if(!$item || strpos($item, '#') === 0) {
+					continue;
+				}
 				$datas[] = $item;
 			}
 
@@ -80,8 +78,11 @@ abstract class AbstractKicker
 			fclose($resource);
 
 			# Merge
-			$list = array_merge_recursive($list, $datas);
+			$list = array_merge($list, $datas);
 		}
+
+		# Deduplication
+		$list = array_unique($list);
 
 		# Return the full list
 		return $list;
@@ -112,65 +113,79 @@ abstract class AbstractKicker
 	 * @param bool $state
 	 * @return $this
 	 */
-	public function allowEmpty(bool $state)
+	public function allowEmpty(bool $state): AbstractKicker
 	{
 		$this->empty = $state;
 		return $this;
 	}
 
 	/**
-	 * Set custom currents items for detection in list
+	 * Set inputlist
 	 *
 	 * @param array $list
 	 * @return $this
 	 */
-	public function setCurrents(array $list)
+	public function setInputList(array $list): AbstractKicker
 	{
-		$this->currents = $list;
+		$this->inputlist = $list;
 		return $this;
 	}
 
 	/**
-	 * Get currents haystack
+	 * Get inputlist
 	 *
 	 * @return array
 	 */
-	public function getCurrents(): array
+	public function getInputList(): array
 	{
-		return $this->currents;
+		return $this->inputlist;
 	}
 
 	/**
-	 * Set a custom black list from array
+	 * Add to blacklist
 	 *
 	 * @param array $list
 	 * @return $this
 	 */
-	public function setBlackList(array $list)
+	public function addToInputList(array $list): AbstractKicker
+	{
+		$this->blacklist = array_merge($this->blacklist, $list);
+		$this->blacklist = array_unique($this->blacklist);
+		return $this;
+	}
+
+	/**
+	 * Set blacklist
+	 *
+	 * @param array $list
+	 * @return $this
+	 */
+	public function setBlackList(array $list): AbstractKicker
 	{
 		$this->blacklist = $list;
 		return $this;
 	}
 
 	/**
-	 * Get black list as array
+	 * Get blacklist
 	 *
 	 * @return array
 	 */
 	public function getBlackList(): array
 	{
-		return array_merge($this->blacklist ?: [], $this->custom_bl);
+		return $this->blacklist ?: [];
 	}
 
 	/**
-	 * Add to black list
+	 * Add to blacklist
 	 *
 	 * @param array $list
 	 * @return $this
 	 */
-	public function addToBlackList(array $list)
+	public function addToBlackList(array $list): AbstractKicker
 	{
-		$this->custom_bl = array_merge_recursive($this->custom_bl, $list);
+		$this->blacklist = array_merge($this->blacklist, $list);
+		$this->blacklist = array_unique($this->blacklist);
 		return $this;
 	}
 
@@ -180,7 +195,7 @@ abstract class AbstractKicker
 	 * @param array $list
 	 * @return $this
 	 */
-	public function setWhiteList(array $list)
+	public function setWhiteList(array $list): AbstractKicker
 	{
 		$this->whitelist = $list;
 		return $this;
@@ -193,7 +208,7 @@ abstract class AbstractKicker
 	 */
 	public function getWhiteList(): array
 	{
-		return array_merge($this->whitelist ?: [], $this->custom_wl);
+		return $this->whitelist ?: [];
 	}
 
 	/**
@@ -202,9 +217,10 @@ abstract class AbstractKicker
 	 * @param array $list
 	 * @return $this
 	 */
-	public function addToWhiteList(array $list)
+	public function addToWhiteList(array $list): AbstractKicker
 	{
-		$this->custom_wl = array_merge_recursive($this->custom_wl, $list);
+		$this->whitelist = array_merge($this->whitelist, $list);
+		$this->whitelist = array_unique($this->whitelist);
 		return $this;
 	}
 
@@ -213,9 +229,8 @@ abstract class AbstractKicker
 	 *
 	 * @param array $paths
 	 * @return $this
-	 * @throws Exception
 	 */
-	public function setBlackListFromFiles(array $paths)
+	public function setBlackListFromFiles(array $paths): AbstractKicker
 	{
 		$this->blacklist = $this->getDataFromFiles($paths);
 		return $this;
@@ -226,9 +241,8 @@ abstract class AbstractKicker
 	 *
 	 * @param array $paths
 	 * @return $this
-	 * @throws Exception
 	 */
-	public function setWhiteListFromFiles(array $paths)
+	public function setWhiteListFromFiles(array $paths): AbstractKicker
 	{
 		$this->whitelist = $this->getDataFromFiles($paths);
 		return $this;
@@ -242,32 +256,31 @@ abstract class AbstractKicker
 	 */
 	public function detect(): Status
 	{
-		# Autoload default files
-		if(null === $this->blacklist && $this->default) { $this->setBlackListFromFiles($this->default); }
-
 		# (Dis)Allow empty haystack
-		if(!$this->currents) {
+		if(!$this->inputlist) {
 			return new Status($this->empty);
 		}
 
-		# Detect if current haystack is in white list
-		$wl = $this->getWhiteList();
-		if($wl) foreach ($this->currents as $current) {
-			if($list = $this->match($current, $wl)) {
-				return new Status(true, $this->currents, $list);
+		# Detect if current haystack is in whitelist
+		if($wl = $this->getWhiteList()) {
+			foreach ($this->inputlist as $input) {
+				if($matches = $this->match($input, $wl)) {
+					return new Status(true, $this->inputlist, $matches);
+				}
 			}
 		}
 
 		# Detect if current haystack is in black list
-		$bl = $this->getBlackList();
-		if($bl) foreach ($this->currents as $current) {
-			if($list = $this->match($current, $bl)) {
-				return new Status(false, $this->currents, $list);
+		if($bl = $this->getBlackList()) {
+			foreach ($this->inputlist as $input) {
+				if($matches = $this->match($input, $bl)) {
+					return new Status(false, $this->inputlist, $matches);
+				}
 			}
 		}
 
 		# No bl it's ok
-		return new Status(true, $this->currents);
+		return new Status(true, $this->inputlist);
 	}
 
 	/**
@@ -278,6 +291,6 @@ abstract class AbstractKicker
 	public function isRobotsTxtRequested(): bool
 	{
 		$url = $_SERVER['SCRIPT_URL'] ?? ($_SERVER['REQUEST_URI'] ?? '');
-		return false !== strpos($url, 'robots.txt');
+		return false !== strpos($url, '/robots.txt');
 	}
 }

@@ -2,7 +2,6 @@
     "name": "coercive/botkicker",
     "type": "library",
     "description": "Coercive Security BotKicker",
-    "homepage": "http://coercive.fr",
     "license": "MIT",
     "licenses": [{
       "type": "MIT",
@@ -11,17 +10,18 @@
     "authors": [
         {
             "name": "Anthony Moral",
-            "email": "contact@coercive.fr",
-            "homepage": "http://coercive.fr"
+            "email": "contact@coercive.fr"
         }
     ],
     "require": {
-      "php": ">=7",
+      "php": ">=7.4",
       "symfony/yaml": "^2"
     },
     "require-dev": {},
     "autoload": {
-        "psr-4": { "Coercive\\Security\\BotKicker\\": "/dist" }
+        "psr-4": {
+          "Coercive\\Security\\BotKicker\\": "/dist"
+        }
     },
     "minimum-stability" : "dev",
     "extra": {

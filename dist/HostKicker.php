@@ -38,7 +38,7 @@ class HostKicker extends AbstractKicker
 		foreach ($list as $ip) {
 			$host = gethostbyaddr($ip);
 			if($ip === $host) { continue; }
-			$this->currents[] = $host;
+			$this->list[] = $host;
 		}
 		return $this;
 	}

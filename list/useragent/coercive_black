@@ -10,6 +10,11 @@
 \{
 \}
 
+# DANGER
+
+^null$
+^\(null\)
+
 # PHP
 
 \$_GLOBAL
@@ -114,8 +119,6 @@ collection@infegy\.com
 comodo
 company
 Connect Us
-crawl
-crawler
 Crowdfire
 ^curl$
 Custo
@@ -123,6 +126,7 @@ Custo
 cyber\.law\.harvard\.edu
 Cyberfox
 DaPian
+DataForSeoBot
 datagnion
 datagnionbot
 Dataprovider
@@ -270,7 +274,6 @@ IRLbot
 ISC Systems iRc Search 2\.1
 istellabot
 jakarta
-Java
 Jersey
 JetCar
 jivesearch
@@ -319,6 +322,7 @@ mediatoolkit
 Mediatoolkitbot
 MetaInspector
 mediawords
+MegaIndex
 MetaFeedly
 MetaURI
 metauri\.com
@@ -368,8 +372,6 @@ NonAppStore
 nosite\.com
 \(Not decided yet\)
 NotabilityShareExtension
-^null$
-^\(null\)
 nutch
 Nuzzel
 OA-Indicator
@@ -394,6 +396,8 @@ pcBrowser
 Pearltrees
 PECL::HTTP
 PeoplePal
+PetalBot
+petalsearch
 PHPCrawl
 PicoFeed
 Pinterest

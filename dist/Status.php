@@ -14,26 +14,26 @@ namespace Coercive\Security\BotKicker;
 class Status
 {
 	/** @var bool BotKicker state */
-	private $state = false;
+	private bool $state;
 
 	/** @var array Current check */
-	private $currents = [];
+	private array $inputs;
 
 	/** @var array Current list elements that match */
-	private $list = [];
+	private array $matches;
 
 	/**
 	 * Status constructor.
 	 *
 	 * @param bool $state
-	 * @param array $currents [optional]
-	 * @param array $list [optional]
+	 * @param array $inputs [optional]
+	 * @param array $matches [optional]
 	 */
-	public function __construct(bool $state, array $currents = [], array $list = [])
+	public function __construct(bool $state, array $inputs = [], array $matches = [])
 	{
 		$this->state = $state;
-		$this->currents = $currents;
-		$this->list = $list;
+		$this->inputs = $inputs;
+		$this->matches = $matches;
 	}
 
 	/**
@@ -47,16 +47,16 @@ class Status
 	/**
 	 * @return array
 	 */
-	public function getCurrents(): array
+	public function getInputs(): array
 	{
-		return $this->currents;
+		return $this->inputs;
 	}
 
 	/**
 	 * @return array
 	 */
-	public function getList(): array
+	public function getMatches(): array
 	{
-		return $this->list;
+		return $this->matches;
 	}
 }
