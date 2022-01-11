@@ -5,7 +5,7 @@ namespace Coercive\Security\BotKicker;
  * BOT KICKER
  *
  * @package		Coercive\Security\BotKicker
- * @link		@link https://github.com/Coercive/BotKicker
+ * @link		https://github.com/Coercive/BotKicker
  *
  * @author  	Anthony Moral <contact@coercive.fr>
  * @copyright   2018 Anthony Moral

@@ -7,7 +7,7 @@ use Exception;
  * BOT KICKER
  *
  * @package		Coercive\Security\BotKicker
- * @link		@link https://github.com/Coercive/BotKicker
+ * @link		https://github.com/Coercive/BotKicker
  *
  * @author  	Anthony Moral <contact@coercive.fr>
  * @copyright   (c) 2018 Anthony Moral
