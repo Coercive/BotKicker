@@ -252,7 +252,6 @@ abstract class AbstractKicker
 	 * LIST DETECT
 	 *
 	 * @return Status
-	 * @throws Exception
 	 */
 	public function detect(): Status
 	{
