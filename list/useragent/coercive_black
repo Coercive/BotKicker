@@ -70,8 +70,6 @@ Apache
 Apache-HttpClient
 appengine
 AppEngine-Google
-Applebot
-apple\.com
 Apple-PubSub
 archive
 archive\.org
@@ -149,9 +147,6 @@ domaincrawler
 dontuse
 dotbot
 Download Demon
-DuckDuckGo
-duckduckgo\.com
-DuckDuckGo-Favicons-Bot
 eCairn
 ecairn\.com
 eCatch
@@ -178,8 +173,6 @@ ExtractorPro
 EyeNetIE
 eZ Publish Link Validator
 EZBLinkcheck
-facebook\.com
-facebookexternalhit
 Faveeo
 faveeo\.com
 FeedBurner
@@ -187,18 +180,12 @@ FeedDemon
 feeddemon\.com
 FeedFetcher
 feedfinder
-Feedly
-FeedlyBot
 Feed Parser
 Feedspot
 feedspot\.com
 FHscan
 FlashGet
 flicky
-flipboard\.com
-Flipboard
-FlipboardProxy
-FlipboardRSS
 Frog
 Funnelback
 G-i-g-a-b-o-t
@@ -260,7 +247,6 @@ imgsizer
 INA dlweb
 Indy Library
 infegy
-Instagram
 Instapaper
 integralads
 InterGET
@@ -293,7 +279,6 @@ LightspeedSystemsCrawler
 LinkCheck
 linkdex
 linkdexbot
-LinkedInBot
 linkfluence
 linkis\.com
 LinkisBot
@@ -325,7 +310,6 @@ mediawords
 MegaIndex
 MetaFeedly
 MetaURI
-metauri\.com
 MFC_Tear_Sample
 Microsoft Office Excel
 Microsoft Office Existence Discovery
@@ -356,12 +340,10 @@ NetNewsWire
 NetSeer
 NetSpider
 Netvibes
-netvibes\.com
 NetZIP
 newsgator\.com
 NewsGatorOnline
 NewShareCounts
-newsharecounts\.com
 newsify\.co
 Newsify Feed Fetcher
 newspaper
@@ -382,7 +364,6 @@ Offline Navigator
 okhttp
 Olbico
 omgili
-omgili\.com
 opensyllabusproject
 orion-semantics\.com
 OSPScraper
@@ -401,7 +382,6 @@ petalsearch
 PHPCrawl
 PicoFeed
 Pinterest
-Pinterestbot
 planetwork
 PleaseCrawl
 PocketParser
@@ -414,12 +394,9 @@ psbot
 purebot
 pycurl
 Python
-python-requests
-Python-urllib
 Pywikibot
 QuiteRSS
 RankingBot
-RankingBot2
 RateStickerBot
 ReadKit
 reading\.am
@@ -427,7 +404,6 @@ RealDownload
 Reeder
 ReGet
 RestSharp
-riddler\.io
 Riddler
 Rippers 0
 ^robots$
@@ -435,7 +411,6 @@ RPT-HTTPClient
 ^RSS$
 RSSOwl
 Ruby
-Ruby\/Curb
 safarifetcherd
 \(Sage\)
 SBIder
@@ -443,18 +418,15 @@ scalaj-http
 Scoop\.it
 ScooperBot
 Scrapy
-scrapy\.org
 Screaming
 Screaming Frog SEO Spider
 SeaMonkey
 seokicks
-seokicks\.de
 SEOkicks-Robot
 Semanticbot
 semanticscholar\.org
 SemanticScholarBot
 Semiocast
-semiocast\.com
 sempi\.tech
 semrush\.com
 SemrushBot
@@ -467,16 +439,12 @@ sitecheck\.internetseer\.com
 Siteimprove\.com
 SiteSnagger
 skygrid
-slack\.com
-Slackbot
-Slackbot-LinkExpanding
 SmartDownload
 SMUrlExpander
 Snapshot
 Snoopy
 special_archiver
 SPIP
-spip\.net
 Sogou
 Sogou web spider
 Spider
@@ -485,7 +453,6 @@ startmebot
 Steeler
 StoreBot
 Suck
-sucker
 SuperBot
 SuperHTTP
 sur\.ly
@@ -501,19 +468,15 @@ test\/
 Test Certificate Info
 TextRazor
 theoldreader
-theoldreader\.com
 Tiny RSS
 Toata dragostea mea pentru diavola
 Traackr
-Traackr\.com
 trainspottr
-trainspottr\.fm
 trendiction
 trendictionbot0
 TriviaBot
 trusty
 tt-rss\.org
-Tumblr
 turnit
 TurnitinBot
 Tusky
@@ -546,13 +509,10 @@ webalta
 webauth@cmcm\.com 
 WebAuto
 WebBandit
-webbandit
 WebCopier
 WebDAV
 WebFetch
 WebGeno
-WebGeno\.me
-WebGeno\.me Research Project
 WebGo IS
 WebLeacher
 WebReaper
@@ -577,7 +537,6 @@ Windows-RSS-Platform
 WindowsPowerShell
 WinHTTP
 WordPress
-WordPress\.com
 wpif
 WWW-Mechanize
 WWWOFFLE
@@ -590,9 +549,6 @@ YahooCacheSystem
 YahooWebServiceClient
 YaK
 Yandex
-yandex\.com
-YandexAntivirus
-YandexBot
 Yeti
 YisouSpider
 YiSpecter

@@ -25,34 +25,10 @@ BingPreview
 msnbot
 msnbot-media
 
-# AOL https://aol.com
-
-aol\.com
-AOLBuild
-
 # Applebot http://www.apple.com/go/applebot
 
 Applebot
-
-# Ask https://www.ask.com
-
-ask\.com
-Jeeves/Teoma
-Teoma
-
-# Baidu http://www.baiduguide.com/baidu-spider/
-
-Baiduspider
-Baiduspider-image
-Baiduspider-mobile
-Baiduspider-video
-Baiduspider-news
-Baiduspider-favo
-Baiduspider-cpro
-Baiduspider-ads
-
-# DoCoMo Japan Robot http://www.nttdocomo.co.jp/
-DoCoMo
+apple\.com
 
 # DuckDuckGo https://duckduckgo.com/duckduckbot
 
@@ -67,25 +43,7 @@ Yahoo
 
 # Yandex https://yandex.com/support/webmaster/robot-workings/check-yandex-robots.xml
 
-YaDirectFetcher
 yandex
-YandexAccessibilityBot
-YandexAntivirus
-YandexBlogs
-YandexBot
-YandexCalendar
-YandexDirectDyn
-YandexImageResizer
-YandexImages
-YandexPagechecker
-YandexMedia
-YandexMetrika
-YandexMobileBot
-YandexSitelinks
-YandexVertis
-YandexVideo
-YandexWebmaster
-YandexBot.+MirrorDetector
 
 # Social Networks
 
@@ -100,11 +58,13 @@ LinkedInBot
 
 # Slack https://api.slack.com/robots
 
+slack\.com
 Slackbot
 Slackbot-LinkExpanding
 Slack-ImgProxy
 
 # Twitter https://developer.twitter.com/en/docs/tweets/optimize-with-cards/guides/getting-started
+
 Twitterbot
 
 # Warning : of (like TwitterBot)
