@@ -25,6 +25,12 @@ BingPreview
 msnbot
 msnbot-media
 
+# Microsoft Outlook https://developers.whatismybrowser.com/useragents/explore/software_name/outlook/
+
+ms-office
+MSOffice
+Outlook
+
 # Applebot http://www.apple.com/go/applebot
 
 Applebot
