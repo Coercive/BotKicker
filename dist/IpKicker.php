@@ -14,6 +14,8 @@ namespace Coercive\Security\BotKicker;
 class IpKicker extends AbstractKicker
 {
 	const COERCIVE_FILE = __DIR__ . '/../list/ip/coercive';
+	const GOOGLE_FILE = __DIR__ . '/../list/ip/google';
+	const GOOGLEBOT_FILE = __DIR__ . '/../list/ip/googlebot';
 
 	/**
 	 * GET IP(s)
