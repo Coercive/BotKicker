@@ -76,3 +76,18 @@ Twitterbot
 
 # Warning : of (like TwitterBot)
 (?<!like )TwitterBot
+
+# RSS Feed Bots
+
+# Google
+
+FeedFetcher-Google
+
+# Feedly
+
+Feedly
+MetaFeedly
+
+# Flipboard
+
+FlipboardProxy
