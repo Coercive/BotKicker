@@ -1,0 +1,17 @@
+# Coercive list
+
+^/admin$
+^/administrator$
+^/dashboard
+^/drupal\d+?
+/wordpress
+/wp-admin
+/wp-content
+/wp-cron
+/wp-header
+/wp-info
+/wp-login
+/wp-old
+/wp-x.php
+/wp-\d+.php
+/xmlrpc.php
