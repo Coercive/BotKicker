@@ -16,6 +16,7 @@ class IpKicker extends AbstractKicker
 	const COERCIVE_FILE = __DIR__ . '/../list/ip/coercive';
 	const GOOGLE_FILE = __DIR__ . '/../list/ip/google';
 	const GOOGLEBOT_FILE = __DIR__ . '/../list/ip/googlebot';
+	const FACEBOOKBOT_FILE = __DIR__ . '/../list/ip/facebookbot';
 
 	/**
 	 * GET IP(s)
@@ -68,5 +69,25 @@ class IpKicker extends AbstractKicker
 	{
 		$this->setBlackListFromFiles([self::COERCIVE_FILE]);
 		return $this;
+	}
+
+	/**
+	 * Retrieve dynamicaly all IPv4 & IPv6 from Facebook
+	 *
+	 * @link https://developers.facebook.com/docs/sharing/webmasters/crawler/
+	 *
+	 * @param bool $ipv6 [optional]
+	 * @return string[]
+	 */
+	public function getFacebookList(bool $ipv6 = false): array
+	{
+		$list = [];
+		$cmd = "whois -h whois.radb.net -- '-i origin AS32934' | grep ^route" . ($ipv6 ? '6' : '') . ':';
+		if(exec($cmd, $output)) {
+			foreach ($output as $line) {
+				$list[] = preg_replace('`route\d?:\s+`', '', $line);
+			}
+		}
+		return $list;
 	}
 }
