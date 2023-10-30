@@ -173,3 +173,46 @@ var_dump( $status->getStatus() ); # bool if ok or not
 var_dump( $status->getList() ); # array list of match elements
 var_dump( $status->getCurrents() ); # array current datas
 ```
+
+Host / Ns Look Up
+-----------------
+
+Get the domains list from IP
+```php
+use Coercive\Security\BotKicker\HostLookUp;
+use Coercive\Security\BotKicker\NsLookUp;
+
+$look = new HostLookUp;
+# OR
+$look = new NsLookUp;
+
+$array = $look->getDomains('111.22.33.4');
+```
+
+Get the ip list from domain
+```php
+use Coercive\Security\BotKicker\HostLookUp;
+use Coercive\Security\BotKicker\NsLookUp;
+
+$look = new HostLookUp;
+# OR
+$look = new NsLookUp;
+
+$array = $look->getIps('www.example.com.');
+```
+
+Match item
+```php
+use Coercive\Security\BotKicker\HostLookUp;
+use Coercive\Security\BotKicker\NsLookUp;
+
+$look = new HostLookUp;
+# OR
+$look = new NsLookUp;
+
+# Match ip > domain
+$array = $look->match('111.22.33.4', 'www.example.com.');
+
+# OR mactch with reverse (match ip > domain first and domain > ip after)
+$array = $look->match('111.22.33.4', 'www.example.com.', true);
+```
