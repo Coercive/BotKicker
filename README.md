@@ -91,6 +91,9 @@ $kicker->setHostFromIp( [
 ] );
 ```
 
+IpKicker only
+-------------
+
 You can use the auto IP detection from IpKicker
 
 ```php
@@ -100,6 +103,17 @@ $list = (new IpKicker)->getCurrents();
 # Set auto ip list
 $kicker = new HostKicker;
 $kicker->setHostFromIp($list);
+```
+
+IpKicker can now detect Facebookbot and Bingbot
+
+```php
+# Get auto Ip list detection
+$ipk = new IpKicker;
+
+$list = $ipk->getFacebookList();
+
+$list = $ipk->isBing('157.55.39.1', true | false); # Linux Host cmd (true) / NsLookUp (false)
 ```
 
 Trigger on custom element

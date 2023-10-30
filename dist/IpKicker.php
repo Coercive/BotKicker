@@ -90,4 +90,29 @@ class IpKicker extends AbstractKicker
 		}
 		return $list;
 	}
+
+	/**
+	 * Detect if Bingbot, based on domain 'search.msn.com'
+	 *
+	 * @link https://www.bing.com/webmasters/help/how-to-verify-bingbot-3905dc26
+	 *
+	 * @param string $ip
+	 * @param bool $linux [optional]
+	 * @return Status
+	 */
+	public function isBing(string $ip, bool $linux = false): Status
+	{
+		# Linux cmd host
+		if($linux) {
+			$lk = new HostLookUp;
+		}
+
+		# Microsoft cmd nslookup
+		else {
+			$lk = new NsLookUp;
+		}
+		$bing = $lk->match($ip, 'search.msn.com', true);
+
+		return new Status($bing, $this->inputlist, [$ip]);
+	}
 }
