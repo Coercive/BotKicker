@@ -397,7 +397,6 @@ RPT-HTTPClient
 ^RSS$
 RSSOwl
 Ruby
-safarifetcherd
 \(Sage\)
 SBIder
 scalaj-http
