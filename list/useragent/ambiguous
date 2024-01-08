@@ -1,8 +1,9 @@
 # Some elements of the other lists have been removed due to too large or ambiguous detections
 
-# Used in some UserAgent on mobile like WebView with some included data
+# Used in some UserAgent on mobile like WebView, BookBuddy, with some included data
 \{
 \}
+\%
 
 browserproxy
 BOI
