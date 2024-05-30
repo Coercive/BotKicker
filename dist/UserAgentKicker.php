@@ -15,6 +15,7 @@ class UserAgentKicker extends AbstractKicker
 {
 	const AMBIGUOUS_FILE = __DIR__ . '/../list/useragent/ambiguous';
 	const COERCIVE_BLACK_FILE = __DIR__ . '/../list/useragent/coercive_black';
+	const COERCIVE_GRAY_FILE = __DIR__ . '/../list/useragent/coercive_gray';
 	const COERCIVE_WHITE_FILE = __DIR__ . '/../list/useragent/coercive_white';
 	const MITCHELLKROGZA_FILE = __DIR__ . '/../list/useragent/mitchellkrogza';
 	const PERISHABLE_FILE = __DIR__ . '/../list/useragent/perishable';
@@ -48,6 +49,15 @@ class UserAgentKicker extends AbstractKicker
 	public function loadCoerciveWhitelist(): UserAgentKicker
 	{
 		$this->setWhiteListFromFiles([self::COERCIVE_WHITE_FILE]);
+		return $this;
+	}
+
+	/**
+	 * @return $this
+	 */
+	public function loadCoerciveGraylist(): UserAgentKicker
+	{
+		$this->setBlackListFromFiles([self::COERCIVE_GRAY_FILE]);
 		return $this;
 	}
 

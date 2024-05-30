@@ -1,0 +1,12 @@
+# Some elements that must be blocked, but in a more flexible way.
+
+browserproxy
+CFNetwork
+cosmos
+crawl
+eZ Publish Link Validator
+GoogleToolbar
+Java
+KlHttpClientCurl
+okhttp
+Windows-RSS-Platform
