@@ -12,8 +12,11 @@
 /.+\.tar\.gz
 /.+\.tgz
 /.+\.zip
-^/.bash_history
-^/.env.production
+/\.bash_history
+/\.env.production
+/\.vscode/sftp\.json
+/\.well-known/assetlinks\.json
+/\.well-known/traffic-advice
 /_3001092203_\.php
 /1ytnzpekh\.php
 ^/3\.php$
@@ -113,6 +116,7 @@
 /sqladmin/
 /sqlmanager/
 ^/src\.php
+/style\.php
 /sub\.php
 /suck\.php
 /swm\.php
