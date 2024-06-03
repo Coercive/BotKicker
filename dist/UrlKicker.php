@@ -14,6 +14,7 @@ namespace Coercive\Security\BotKicker;
 class UrlKicker extends AbstractKicker
 {
 	const COERCIVE_BLACK_FILE = __DIR__ . '/../list/url/coercive_black';
+	const COERCIVE_GRAY_FILE = __DIR__ . '/../list/url/coercive_gray';
 
 	/**
 	 * @var string Input IP
@@ -83,6 +84,15 @@ class UrlKicker extends AbstractKicker
 	public function loadCoerciveBlacklist(): self
 	{
 		$this->setBlackListFromFiles([self::COERCIVE_BLACK_FILE]);
+		return $this;
+	}
+
+	/**
+	 * @return $this
+	 */
+	public function loadCoerciveGraylist(): self
+	{
+		$this->setBlackListFromFiles([self::COERCIVE_GRAY_FILE]);
 		return $this;
 	}
 
