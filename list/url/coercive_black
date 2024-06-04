@@ -27,13 +27,14 @@
 /abu\.php
 /about\.php
 /addcrop\.php
-^/admin(/|\.php|$)
-/admin/db
-^/administrator(/|$)
 /ajax-requests\.new\.php
 /alfa\.php
 /alfapas\.php
+^/admin(/|\.php|$)
+/admin/db
+^/administrator(/|$)
 /api\.php
+/app-ads.txt
 /array_diff_uassoc\.php
 /assets/filemanager/dialog\.php
 /ax87es\.php
@@ -118,7 +119,7 @@
 /rindex\.php
 /sam\.php
 /searchformz\.php
-/seller\.php
+/sellers?\.php
 /sfm\.php
 ^/sftp-config\.json
 /shells\.php
