@@ -5,8 +5,10 @@
 /.+\.asp\.bak
 /.+\.bak
 /.+\.bz2
+/.+\.dat
 /.+\.gz
 /.+\.rar
+/.+\.sql
 /.+\.tar
 /.+\.tar\.bz2
 /.+\.tar\.gz
@@ -43,6 +45,8 @@
 /assets/filemanager/dialog\.php
 /ax87es\.php
 /axis2
+/backups/config\.json
+/bak/credentials\.txt
 /betdiyffse\.php
 /bitwise\.php
 /blkbefqor\.php
@@ -125,6 +129,7 @@
 /rendi59\.php
 /repeater\.php
 /rest-api-ajax\.php
+/restore/config\.json
 /rindex\.php
 /sam\.php
 /searchformz\.php
@@ -152,6 +157,7 @@
 /upload\.php
 ^/v9\.php$
 /vendor
+/wallet\.dat
 /webdb/
 /websql/
 /webuploader
