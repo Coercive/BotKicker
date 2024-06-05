@@ -72,6 +72,7 @@
 /fpebr\.php
 /gtoext\.php
 /h4xor\.php
+/hekenews
 /Hhhknt-an9awlbkhhh\.php
 /heads\.php
 /hello\.php
@@ -111,6 +112,8 @@
 /phpmy/
 /pma/index\.php
 /poster\.php
+/preview\.php
+/print\.php
 /program/index\.php
 /px9nis\.php
 /rediraction\.php
@@ -145,6 +148,7 @@
 /vendor
 /webdb/
 /websql/
+/webuploader
 /widgets\.sys\.php
 /wordpress
 /wp-admin
