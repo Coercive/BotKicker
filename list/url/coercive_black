@@ -17,9 +17,11 @@
 /\.env
 /\.env.production
 /\.git/config
+/\.ftpconfig
 /\.vscode/sftp\.json
 /_3001092203_\.php
 /1ytnzpekh\.php
+/62b35cf124a4\.php
 ^/3\.php$
 /4index\.php
 /4pric\.php
@@ -27,6 +29,7 @@
 /ah\.php
 /abu\.php
 /about\.php
+/accesson\.php
 /addcrop\.php
 /ajax-requests\.new\.php
 /alfa\.php
@@ -170,4 +173,5 @@
 /wzy\.php
 /xfox\.php
 /xmlrpc\.php
+/Y29uZGl0aW
 /zaco\.php
