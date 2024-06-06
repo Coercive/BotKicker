@@ -41,6 +41,7 @@
 ^/administrator(/|$)
 /api\.php
 /app-ads.txt
+/archivarix\.cms\.php
 /array_diff_uassoc\.php
 /assets/filemanager/dialog\.php
 /ax87es\.php
@@ -52,14 +53,16 @@
 /blkbefqor\.php
 /bump\.php
 /c0derz_shell\.php
+/CHANGELOG\.txt
+/chomper\.php
 /cjfuns\.php
 /class.api\.php
 /class-wp-customize-date-time-control-core\.php
 /class-wp-image-editor-fd\.php
 /class-wp-network-wp\.php
 /class-wp-page-zXJGhl\.php
-/chomper\.php
 /combined\.php
+/config\.json
 /contato\.php
 /content-link\.php
 /cpanel\.php
@@ -70,6 +73,7 @@
 /defaults\.php
 ^/drupal\d+?
 /dw\.php
+/dump\.sql
 /e/DoInfo/AddInfo\.php
 /ern1\.php7
 /ern1\.php
@@ -155,6 +159,7 @@
 /taf\.php
 /te2soqliwzr\.php
 /upload\.php
+/user/password
 ^/v9\.php$
 /vendor
 /wallet\.dat
@@ -180,6 +185,7 @@
 /wp-ver\.php
 /wp-x\.php
 /wp-\d+\.php
+/www\.sql
 /wzy\.php
 /xfox\.php
 /xmlrpc\.php
