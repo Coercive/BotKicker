@@ -170,6 +170,7 @@
 /well-known\.zip
 /widgets\.sys\.php
 /wordpress
+/wp-add\.php
 /wp-admin
 /wp-content
 /wp-cron
@@ -180,6 +181,7 @@
 /wp-index\.php
 /wp-info
 /wp-json
+/wp-ldd\.php
 /wp-login
 /wp-old
 /wp-toz\.php
