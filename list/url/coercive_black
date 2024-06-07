@@ -44,6 +44,7 @@
 /archivarix\.cms\.php
 /array_diff_uassoc\.php
 /assets/filemanager/dialog\.php
+/auto_seo\.php
 /ax87es\.php
 /axis2
 /backups/config\.json
@@ -53,6 +54,7 @@
 /blkbefqor\.php
 /bump\.php
 /c0derz_shell\.php
+/cgi-bin/viewimg
 /CHANGELOG\.txt
 /chomper\.php
 /cjfuns\.php
@@ -75,6 +77,7 @@
 /dw\.php
 /dump\.sql
 /e/DoInfo/AddInfo\.php
+/emergency\.php
 /ern1\.php7
 /ern1\.php
 /ex\.php
@@ -91,6 +94,7 @@
 /inc20k1\.php
 ^/includ$
 /inje3ctor\.php
+/inputs\.php
 /install\.php
 /ioxi001\.php7
 /ioxi002\.php7
@@ -100,7 +104,9 @@
 /kil\.php
 /large-header-stream\.php
 /link-template-cron\.php
+/login\.php
 /mailer\.php
+/manager/assets/modext/license\.txt
 /matomo.php
 /mixins\.php
 /mnTIQa1kuWt\.php
@@ -142,6 +148,7 @@
 ^/sftp-config\.json
 /shells\.php
 /shopdb/
+/simple\.php
 /site-brandes\.php
 /sitelog\.php
 /site_name_com\.gz
@@ -192,5 +199,6 @@
 /wzy\.php
 /xfox\.php
 /xmlrpc\.php
+/xxxss
 /Y29uZGl0aW
 /zaco\.php

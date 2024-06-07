@@ -5,8 +5,10 @@
 /\.well-known/ai\.txt
 /\.well-known/change-password
 /\.well-known/resource-that-should-not-exist-whose-status-code-should-not-be-200
+/\.well-known/security\.txt
 /\.well-known/tdmrep\.json
 /\.well-known/traffic-advice
 /ads\.txt
 /ai\.txt
 /autodiscover/autodiscover\.xml
+/security\.txt
