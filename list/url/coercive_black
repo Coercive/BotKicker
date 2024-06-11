@@ -1,12 +1,14 @@
 # Coercive list
 
 /.+\.7z
+/.+\.ashx
 /.+\.asp
 /.+\.asp\.bak
 /.+\.bak
 /.+\.bz2
 /.+\.dat
 /.+\.gz
+/.+\.jsp
 /.+\.rar
 /.+\.sql
 /.+\.tar
@@ -40,6 +42,7 @@
 /admin/db
 ^/administrator(/|$)
 /api\.php
+/api/file/formimage
 /app-ads.txt
 /archivarix\.cms\.php
 /array_diff_uassoc\.php
@@ -76,6 +79,7 @@
 ^/drupal\d+?
 /dw\.php
 /dump\.sql
+/dup-installer/main\.installer\.php
 /e/DoInfo/AddInfo\.php
 /emergency\.php
 /ern1\.php7
@@ -103,11 +107,14 @@
 /jr\.php
 /kil\.php
 /large-header-stream\.php
+/legal/privacy-policy
 /link-template-cron\.php
 /login\.php
 /mailer\.php
+/main\.installer\.php
 /manager/assets/modext/license\.txt
 /matomo.php
+/mayicms
 /mixins\.php
 /mnTIQa1kuWt\.php
 /ms-files-private\.php
@@ -157,6 +164,7 @@
 /sqladmin/
 /sqlmanager/
 ^/src\.php
+/ss\.php
 /st\.php
 /style\.php
 /ss\.php
@@ -166,8 +174,10 @@
 /tab_licitacoes-old\.php
 /taf\.php
 /te2soqliwzr\.php
+/uas/login
 /upload\.php
 /user/password
+/Ueditor/net/controller\.ashx
 ^/v9\.php$
 /vendor
 /wallet\.dat
@@ -179,6 +189,7 @@
 /wordpress
 /wp-add\.php
 /wp-admin
+/wp-apxupx\.php
 /wp-content
 /wp-cron
 /wp-dsa\.php
@@ -199,6 +210,8 @@
 /wzy\.php
 /xfox\.php
 /xmlrpc\.php
+/xx\.php
 /xxxss
 /Y29uZGl0aW
+/yeti/\.git/HEAD
 /zaco\.php
