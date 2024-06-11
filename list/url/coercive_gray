@@ -4,6 +4,8 @@
 /\.well-known/assetlinks\.json
 /\.well-known/ai\.txt
 /\.well-known/change-password
+/\.well-known/gpc\.json
+/\.well-known/openid-configuration
 /\.well-known/resource-that-should-not-exist-whose-status-code-should-not-be-200
 /\.well-known/security\.txt
 /\.well-known/tdmrep\.json
