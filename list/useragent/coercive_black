@@ -196,6 +196,7 @@ Go-Ahead-Got-It
 Go-http-client
 ^Go [0-9\.]+ package http$
 Go!Zilla
+GPTBot
 grab
 Grabber
 GrabNet
@@ -345,6 +346,7 @@ Offline Navigator
 okhttp
 Olbico
 omgili
+openai
 opensyllabusproject
 orion-semantics\.com
 OSPScraper
