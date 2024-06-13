@@ -54,6 +54,7 @@
 ^/administrator(/|$)
 /api\.php
 /api/file/formimage
+/api/user/ismustmobile
 /api/v2\.0/systeminfo
 /app-ads.txt
 /app/monitor
@@ -88,6 +89,7 @@
 /cpanel\.php
 cyberwatch
 /cyberwatch\.app
+/cx_platform/conf\.json
 ^/dashboard
 /database/
 /dbadmin/
@@ -132,9 +134,11 @@ cyberwatch
 /link-template-cron\.php
 /login\.php
 /logindisclaimer
+/lottery/rotate/index\.php
 /mailer\.php
 /main\.installer\.php
 /manager/assets/modext/license\.txt
+/market/market-ws/iframe\.html
 /matomo.php
 /mayicms
 /misc/drupal\.js
@@ -161,6 +165,7 @@ passwd
 /phppma/
 /phpmy/
 /pma/index\.php
+/portal/index/protocol\.html
 /poster\.php
 /preview\.php
 /print\.php
@@ -243,6 +248,7 @@ system32
 /wp-ver\.php
 /wp-x\.php
 /wp-\d+\.php
+/ws/index/getTheLotteryInitList
 /www\.sql
 /wzy\.php
 /xfox\.php

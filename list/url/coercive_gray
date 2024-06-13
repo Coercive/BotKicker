@@ -3,6 +3,7 @@
 /\.well-known/acme-challenge
 /\.well-known/assetlinks\.json
 /\.well-known/ai\.txt
+/\.well-known/ai-plugin\.json
 /\.well-known/change-password
 /\.well-known/gpc\.json
 /\.well-known/openid-configuration
