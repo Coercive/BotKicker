@@ -1,12 +1,15 @@
 # Some elements that must be blocked, but in a more flexible way.
 
 /\.well-known/acme-challenge
+/\.well-known/apple-app-site-association
 /\.well-known/assetlinks\.json
 /\.well-known/ai\.txt
 /\.well-known/ai-plugin\.json
 /\.well-known/change-password
 /\.well-known/gpc\.json
 /\.well-known/openid-configuration
+/\.well-known/privacy-sandbox-attestations\.json
+/\.well-known/related-website-set\.json
 /\.well-known/resource-that-should-not-exist-whose-status-code-should-not-be-200
 /\.well-known/security\.txt
 /\.well-known/tdmrep\.json
@@ -16,3 +19,4 @@
 /autodiscover/autodiscover\.xml
 /humans\.txt
 /security\.txt
+/sellers\.json

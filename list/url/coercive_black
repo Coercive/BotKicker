@@ -61,6 +61,7 @@
 /archivarix\.cms\.php
 /array_diff_uassoc\.php
 /assets/filemanager/dialog\.php
+auto_prepend_file
 /auto_seo\.php
 /ax87es\.php
 /axis2
@@ -76,6 +77,8 @@
 /CHANGELOG\.txt
 /chomper\.php
 /cjfuns\.php
+ckeditor
+ckfinder
 /class.api\.php
 /class-wp-customize-date-time-control-core\.php
 /class-wp-image-editor-fd\.php
@@ -95,6 +98,7 @@ cyberwatch
 /dbadmin/
 ^/db/
 /defaults\.php
+/dNvo19Yg7JM6jxxu
 ^/drupal\d+?
 /dw\.php
 /dump\.sql
@@ -128,7 +132,9 @@ cyberwatch
 /jp1dw\.php
 /jqury-cdn1\.js\.php
 /jr\.php
+/js/ckfinder/ckfinder\.html
 /kil\.php
+/kcfinder/upload\.php
 /large-header-stream\.php
 /legal/privacy-policy
 /link-template-cron\.php
@@ -164,6 +170,7 @@ passwd
 /phpinfo\.php
 /phppma/
 /phpmy/
+php://input
 /pma/index\.php
 /portal/index/protocol\.html
 /poster\.php
