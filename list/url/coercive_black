@@ -36,6 +36,7 @@
 /_ignition/execute-solution
 /123/ok/index\.html
 /1ytnzpekh\.php
+/503\.php
 /62b35cf124a4\.php
 ^/3\.php$
 /4index\.php
@@ -50,6 +51,7 @@
 /alfa\.php
 /alfapas\.php
 ^/admin(/|\.php|$)
+/adminer\.php
 /admin/db
 ^/administrator(/|$)
 /api\.php
@@ -65,8 +67,10 @@ auto_prepend_file
 /auto_seo\.php
 /ax87es\.php
 /axis2
+/back/credentials\.txt
 /backup\.sql
 /backups/config\.json
+/backups/sftp-config\.json
 /bak/credentials\.txt
 /betdiyffse\.php
 /bitwise\.php
@@ -84,12 +88,15 @@ ckfinder
 /class-wp-image-editor-fd\.php
 /class-wp-network-wp\.php
 /class-wp-page-zXJGhl\.php
+/cgi-bin/viewlink
 /combined\.php
+/composere?\.php
 /config\.json
 /contato\.php
 /content-link\.php
 /core/misc/drupal\.js
 /cpanel\.php
+/credentials\.txt
 cyberwatch
 /cyberwatch\.app
 /cx_platform/conf\.json
@@ -124,6 +131,8 @@ cyberwatch
 /inc20k1\.php
 ^/includ$
 /index/login/reg\.html
+/info\.php
+/init\.php
 /inje3ctor\.php
 /inputs\.php
 /install\.php
@@ -177,6 +186,12 @@ php://input
 /preview\.php
 /print\.php
 /program/index\.php
+/pub/503\.php
+/pub/errors/503\.php
+/pub/errors/init\.php
+/pub/errors/plusad\.php
+/pub/ups\.php
+/pub/z\.php
 /px9nis\.php
 /rediraction\.php
 /remote/fgt_lang
@@ -186,6 +201,8 @@ php://input
 /repeater\.php
 /rest-api-ajax\.php
 /restore/config\.json
+/restore/credentials\.txt
+/restore/sftp-config\.json
 /rindex\.php
 /room/getRoomBangFans
 /runtime/log
@@ -221,11 +238,13 @@ system32
 /te2soqliwzr\.php
 /uas/login
 /upload\.php
+/ups\.php
 /user/password
 /Ueditor/net/controller\.ashx
 ^/v9\.php$
 /vendor
 /wallet\.dat
+/web_system\.php
 /webdb/
 /websql/
 /webuploader
@@ -236,6 +255,7 @@ system32
 /wsxxulaq47
 /widgets\.sys\.php
 /wordpress
+/WP$
 /wp-add\.php
 /wp-admin
 /wp-apxupx\.php
@@ -265,4 +285,5 @@ system32
 /xxxss
 /Y29uZGl0aW
 /yeti/\.git/HEAD
+/z\.php
 /zaco\.php
