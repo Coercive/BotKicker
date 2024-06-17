@@ -29,6 +29,7 @@
 /\.DS_Store
 /\.env
 /\.env.production
+/\.git
 /\.git/config
 /\.ftpconfig
 /\.vscode/sftp\.json
@@ -46,6 +47,7 @@
 /abu\.php
 /about\.php
 /accesson\.php
+/account/\.git/HEAD
 /addcrop\.php
 /ajax-requests\.new\.php
 /alfa\.php
