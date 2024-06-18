@@ -152,6 +152,7 @@ cyberwatch
 /login\.php
 /logindisclaimer
 /lottery/rotate/index\.php
+/lv\.php
 /mailer\.php
 /main\.installer\.php
 /manager/assets/modext/license\.txt
@@ -195,6 +196,8 @@ php://input
 /pub/ups\.php
 /pub/z\.php
 /px9nis\.php
+/readme\.html
+/readme\.txt
 /rediraction\.php
 /remote/fgt_lang
 /remote/login
