@@ -11,6 +11,7 @@
 /.+\.bck
 /.+\.bz2
 /.+\.dat
+/.+\.exe
 /.+\.gz
 /.+\.jsp
 /.+\.log
@@ -90,6 +91,7 @@ ckfinder
 /class-wp-image-editor-fd\.php
 /class-wp-network-wp\.php
 /class-wp-page-zXJGhl\.php
+/cgi-bin/
 /cgi-bin/viewlink
 /combined\.php
 /composere?\.php
@@ -157,6 +159,7 @@ cyberwatch
 /main\.installer\.php
 /manager/assets/modext/license\.txt
 /market/market-ws/iframe\.html
+matomo\.cloud
 /matomo.php
 /mayicms
 /misc/drupal\.js
@@ -179,6 +182,9 @@ cyberwatch
 /page-30c\.php
 passwd
 /payment\.php
+/php\.exe
+/php-cgi\.exe
+/php-cgi/
 /phpinfo\.php
 /phppma/
 /phpmy/
