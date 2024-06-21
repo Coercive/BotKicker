@@ -55,7 +55,7 @@
 /alfa\.php
 /alfapas\.php
 ^/admin(/|\.php|$)
-/adminer\.php
+/adminer_?\.php
 /admin/db
 ^/administrator(/|$)
 /api\.php
@@ -76,6 +76,7 @@ auto_prepend_file
 /backups/config\.json
 /backups/sftp-config\.json
 /bak/credentials\.txt
+/base\.php
 /betdiyffse\.php
 /bitwise\.php
 /blkbefqor\.php
@@ -233,6 +234,7 @@ php://input
 /sitecore/shell/sitecore\.version\.xml
 /solr/admin
 ^/sql/
+/sql\.php
 /sqladmin/
 /sqlmanager/
 ^/src\.php
