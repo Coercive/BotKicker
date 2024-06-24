@@ -115,6 +115,7 @@ cyberwatch
 /cx_platform/conf\.json
 /cxwlcms\.php
 ^/dashboard
+/data/conf/version\.txt
 /database/
 /dbadmin/
 ^/db/
