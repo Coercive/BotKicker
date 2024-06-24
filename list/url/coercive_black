@@ -6,6 +6,7 @@
 /.+\.ashx
 /.+\.asp
 /.+\.asp\.bak
+/.+\.axd
 /.+\.bak
 /.+\.backup
 /.+\.bck
@@ -54,6 +55,8 @@
 /ajax-requests\.new\.php
 /alfa\.php
 /alfapas\.php
+/alfa_data
+/alfacgiapi
 ^/admin(/|\.php|$)
 /adminer_?\.php
 /admin/db
@@ -64,8 +67,10 @@
 /api/v2\.0/systeminfo
 /app-ads.txt
 /app/monitor
+/apple-app-site-association
 /archivarix\.cms\.php
 /array_diff_uassoc\.php
+/assets/
 /assets/filemanager/dialog\.php
 auto_prepend_file
 /auto_seo\.php
@@ -77,11 +82,13 @@ auto_prepend_file
 /backups/sftp-config\.json
 /bak/credentials\.txt
 /base\.php
+/bash\.alfa
 /betdiyffse\.php
 /bitwise\.php
 /blkbefqor\.php
 /bump\.php
 /c0derz_shell\.php
+/cgialfa
 /cgi-bin/viewimg
 /CHANGELOG\.txt
 /chomper\.php
@@ -106,17 +113,19 @@ ckfinder
 cyberwatch
 /cyberwatch\.app
 /cx_platform/conf\.json
+/cxwlcms\.php
 ^/dashboard
 /database/
 /dbadmin/
 ^/db/
 /defaults\.php
 /dNvo19Yg7JM6jxxu
+/dropdown\.php
 ^/drupal\d+?
+/druid/coordinator
 /dw\.php
 /dump\.sql
 /dup-installer/main\.installer\.php
-/druid/coordinator
 /e/DoInfo/AddInfo\.php
 /emergency\.php
 /ern1\.php7
@@ -184,6 +193,7 @@ matomo\.cloud
 /page-30c\.php
 passwd
 /payment\.php
+/perl\.alfa
 /php\.exe
 /php-cgi\.exe
 /php-cgi/
@@ -204,6 +214,8 @@ php://input
 /pub/ups\.php
 /pub/z\.php
 /px9nis\.php
+/py\.alfa
+/radio\.php
 /readme\.html
 /readme\.txt
 /rediraction\.php
@@ -225,6 +237,7 @@ php://input
 /sfm\.php
 ^/sftp-config\.json
 /shells?\.php
+/shell4?\.php
 /shopdb/
 /simple\.php
 /site-brandes\.php
@@ -250,6 +263,7 @@ system32
 /tab_licitacoes-old\.php
 /taf\.php
 /te2soqliwzr\.php
+/Telerik\.Web\.UI\.WebResource\.axd
 /uas/login
 /upload\.php
 /ups\.php
@@ -263,6 +277,9 @@ system32
 /websql/
 /webuploader
 /websso/SAML
+/\.well-known/alfa_data
+/\.well-known/alfacgiapi
+/\.well-known/cgialfa
 /well-known\.zip
 /whl7svv9d4
 /wjepcgbh23
