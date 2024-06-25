@@ -16,6 +16,7 @@
 /.+\.gz
 /.+\.jsp
 /.+\.log
+/.+\.md5
 /.+\.old
 /.+\.rar
 /.+\.save
@@ -58,6 +59,7 @@
 /alfa_data
 /alfacgiapi
 ^/admin(/|\.php|$)
+/admin/safefiles\.md5
 /adminer_?\.php
 /admin/db
 ^/administrator(/|$)
@@ -162,6 +164,7 @@ cyberwatch
 /kcfinder/upload\.php
 /large-header-stream\.php
 /legal/privacy-policy
+/licence\.txt
 /link-template-cron\.php
 /login\.php
 /logindisclaimer
@@ -210,7 +213,10 @@ php://input
 /program/index\.php
 /pub/503\.php
 /pub/errors/503\.php
+/pub/errors/default/report\.phtml
+/pub/errors/design\.xml
 /pub/errors/init\.php
+/pub/errors/local\.xml\.sample
 /pub/errors/plusad\.php
 /pub/ups\.php
 /pub/z\.php
