@@ -35,6 +35,8 @@
 /\.git
 /\.git/config
 /\.ftpconfig
+/\.kube
+/\.kube/config
 /\.vscode/sftp\.json
 /_3001092203_\.php
 /_ignition/execute-solution
@@ -104,9 +106,11 @@ ckfinder
 /class-wp-page-zXJGhl\.php
 /cgi-bin/
 /cgi-bin/viewlink
+/cms\.html
 /combined\.php
 /composere?\.php
 /config\.json
+/config/production\.json
 /contato\.php
 /content-link\.php
 /core/misc/drupal\.js
@@ -130,6 +134,8 @@ cyberwatch
 /dump\.sql
 /dup-installer/main\.installer\.php
 /e/DoInfo/AddInfo\.php
+/etc/ssl
+/etc/ssl/private
 /emergency\.php
 /ern1\.php7
 /ern1\.php
@@ -241,6 +247,7 @@ php://input
 /sam\.php
 /searchformz\.php
 /sellers?\.php
+server\.key
 /sfm\.php
 ^/sftp-config\.json
 /shells?\.php
