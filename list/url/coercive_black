@@ -56,6 +56,7 @@
 /ah\.php
 /abu\.php
 /about\.php
+/about/security
 /accesson\.php
 /account/\.git/HEAD
 /addcrop\.php
@@ -120,6 +121,7 @@ ckfinder
 /composere?\.php
 /config\.json
 /config/production\.json
+/contact/security
 /contato\.php
 /content-link\.php
 /core/misc/drupal\.js
@@ -136,6 +138,7 @@ cyberwatch
 /db(/|$)
 /db\.php
 /defaults\.php
+/disclosure(/|$)
 /dNvo19Yg7JM6jxxu
 /dropdown\.php
 ^/drupal\d+?
@@ -163,11 +166,13 @@ function\.php
 /Hhhknt-an9awlbkhhh\.php
 /heads\.php
 /hello\.php
+/help/security
 /inc20k1\.php
 ^/includ$
 /index/function\.php
 /index/login/reg\.html
 /info\.php
+/info/security
 /init\.php
 /inje3ctor\.php
 /inputs\.php
@@ -185,6 +190,7 @@ launchplatform
 /legal/privacy-policy
 /licence\.txt
 /link-template-cron\.php
+/login\.aspx
 /login\.php
 /logindisclaimer
 /lottery/rotate/index\.php
@@ -256,6 +262,9 @@ php://input
 /remittency\.php
 /rendi59\.php
 /repeater\.php
+/report-security
+/report-vulnerability
+/responsible-disclosure
 /rest-api-ajax\.php
 /restore/config\.json
 /restore/credentials\.txt
@@ -269,6 +278,14 @@ php://input
 server\.key
 /sfm\.php
 sftp-config\.json
+/security(/|$)
+/security-advisories
+/security-contact
+/security-center
+/security-info
+/security-notice
+/security-policy
+/security-report
 /shells?\.php
 /shell4?\.php
 /shopdb/
@@ -277,6 +294,8 @@ sftp-config\.json
 /sitelog\.php
 /site_name_com\.gz
 /site_name_com\.sql
+/sitecore
+/sitecore/admin/login.aspx
 /sitecore/shell/sitecore\.version\.xml
 /solr/admin
 ^/sql/
@@ -308,6 +327,7 @@ system32
 ^/v9\.php
 /var/pma
 /vendor
+/vulnerability-disclosure
 /wallet\.dat
 /web_system\.php
 /webdb/
