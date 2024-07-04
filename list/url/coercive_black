@@ -105,6 +105,7 @@ auto_prepend_file
 /cgi-bin
 /cgi-bin/viewimg
 /CHANGELOG\.txt
+/chosen\.php
 /chomper\.php
 /cjfuns\.php
 ckeditor
@@ -132,6 +133,7 @@ cyberwatch
 /cx_platform/conf\.json
 /cxwlcms\.php
 ^/dashboard
+/data/admin/allowurl\.txt
 /data/conf/version\.txt
 /database/
 /dbadmin/
@@ -160,6 +162,8 @@ function\.php
 /fpc/app/login
 /fpebr\.php
 /ftpsync\.settings
+/gel4y\.php
+/gelay\.php
 /gtoext\.php
 /h4xor\.php
 /hekenews
@@ -349,6 +353,7 @@ system32
 /wp-add\.php
 /wp-admin
 /wp-apxupx\.php
+/wp-atom\.php
 /wp-content
 /wp-cron
 /wp-dsa\.php
