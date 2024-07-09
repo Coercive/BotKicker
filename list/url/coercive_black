@@ -41,6 +41,7 @@
 /\.vscode/sftp\.json
 /_3001092203_\.php
 /_ignition/execute-solution
+/_profiler/phpinfo
 /1111111111111111111111111111111-index\.html
 /123\.bz
 /1234\.bz
@@ -74,8 +75,10 @@
 /adminMysql
 /api\.php
 /api/file/formimage
+/api/networkTest
 /api/user/ismustmobile
 /api/v2\.0/systeminfo
+/app_dev.php/_profiler/phpinfo
 /app-ads.txt
 /app/monitor
 /apple-app-site-association
@@ -100,6 +103,7 @@ auto_prepend_file
 /bitwise\.php
 /blkbefqor\.php
 /bump\.php
+/BVfFXzrery2hC93o
 /c0derz_shell\.php
 /cgialfa
 /cgi-bin
@@ -117,6 +121,7 @@ ckfinder
 /class-wp-page-zXJGhl\.php
 /cgi-bin/
 /cgi-bin/viewlink
+/chosen\.php
 /cms\.html
 /combined\.php
 /composere?\.php
@@ -139,6 +144,7 @@ cyberwatch
 /dbadmin/
 /db(/|$)
 /db\.php
+/debug/default/view
 /defaults\.php
 /disclosure(/|$)
 /dNvo19Yg7JM6jxxu
@@ -152,12 +158,15 @@ cyberwatch
 /etc/ssl
 /etc/ssl/private
 /emergency\.php
+/EmpireCMS
 /ern1\.php7
 /ern1\.php
 /ex\.php
 /fatheaded\.php
 /fgt_lang\.js
 /filemanager/dialog\.php
+/forum/web\.config
+/frontend/web/debug/default/view
 function\.php
 /fpc/app/login
 /fpebr\.php
@@ -186,6 +195,7 @@ function\.php
 /jp1dw\.php
 /jqury-cdn1\.js\.php
 /jr\.php
+/js/%url%
 /js/ckfinder/ckfinder\.html
 /kil\.php
 /kcfinder/upload\.php
@@ -199,8 +209,10 @@ launchplatform
 /logindisclaimer
 /lottery/rotate/index\.php
 /lv\.php
+/mah\.php
 /mailer\.php
 /main\.installer\.php
+/magento_version
 /manager/assets/modext/license\.txt
 /market/market-ws/iframe\.html
 matomo\.cloud
@@ -220,6 +232,7 @@ matomo\.cloud
 /net\.php
 /node/add
 /notice\.php
+/null(/|$)
 /o6yb7\.php
 /owl\.php
 /_?_?1?2?php-?my-?admin_?
@@ -278,10 +291,6 @@ php://input
 /runtime/log
 /sam\.php
 /searchformz\.php
-/sellers?\.php
-server\.key
-/sfm\.php
-sftp-config\.json
 /security(/|$)
 /security-advisories
 /security-contact
@@ -290,6 +299,13 @@ sftp-config\.json
 /security-notice
 /security-policy
 /security-report
+/sellers?\.php
+/server(/|$)
+server\.key
+servlets?
+SessionExample
+/sfm\.php
+sftp-config\.json
 /shells?\.php
 /shell4?\.php
 /shopdb/
@@ -334,6 +350,8 @@ system32
 /vulnerability-disclosure
 /wallet\.dat
 /web_system\.php
+/web\.config
+/web/debug/default/view
 /webdb/
 /website\.bz
 /websql/
