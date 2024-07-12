@@ -274,6 +274,7 @@ php://input
 /radio\.php
 /readme\.html
 /readme\.txt
+/recaptcha/api2
 /rediraction\.php
 /remoteaccess/login
 /remote/fgt_lang
