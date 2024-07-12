@@ -165,6 +165,7 @@ cyberwatch
 /fatheaded\.php
 /fgt_lang\.js
 /filemanager/dialog\.php
+/fileupload
 /forum/web\.config
 /frontend/web/debug/default/view
 function\.php
@@ -180,6 +181,7 @@ function\.php
 /heads\.php
 /hello\.php
 /help/security
+/impressum
 /inc20k1\.php
 ^/includ$
 /index/function\.php
