@@ -164,8 +164,11 @@ cyberwatch
 /ex\.php
 /fatheaded\.php
 /fgt_lang\.js
+/file\.php
+/filemanager\.php
 /filemanager/dialog\.php
 /fileupload
+/fm\.php
 /forum/web\.config
 /frontend/web/debug/default/view
 function\.php
@@ -294,6 +297,7 @@ php://input
 /runtime/log
 /sam\.php
 /searchformz\.php
+/searchreplacedb2\.php
 /security(/|$)
 /security-advisories
 /security-contact
@@ -341,6 +345,7 @@ system32
 /taf\.php
 /te2soqliwzr\.php
 /Telerik\.Web\.UI\.WebResource\.axd
+/tinyfilemanager\.php
 /uas/login
 /unzipper\.php
 /upload\.php
