@@ -18,6 +18,9 @@ class IpKicker extends AbstractKicker
 	const GOOGLEBOT_FILE = __DIR__ . '/../list/ip/googlebot';
 	const FACEBOOKBOT_FILE = __DIR__ . '/../list/ip/facebookbot';
 
+	const MAILJET_FILE = __DIR__ . '/../list/ip/mailjet';
+	const STRIPE_FILE = __DIR__ . '/../list/ip/stripe';
+
 	/**
 	 * GET IP(s)
 	 *
@@ -69,6 +72,22 @@ class IpKicker extends AbstractKicker
 	{
 		$this->setBlackListFromFiles([self::COERCIVE_FILE]);
 		return $this;
+	}
+
+	/**
+	 * @return array
+	 */
+	public function getMailjetList(): array
+	{
+		return $this->getDataFromFiles([self::MAILJET_FILE]);
+	}
+
+	/**
+	 * @return array
+	 */
+	public function getStripeList(): array
+	{
+		return $this->getDataFromFiles([self::STRIPE_FILE]);
 	}
 
 	/**
