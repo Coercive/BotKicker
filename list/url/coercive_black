@@ -39,6 +39,7 @@
 /\.ftpconfig
 /\.kube
 /\.kube/config
+/\.svn/wc\.db
 /\.vscode/sftp\.json
 /_3001092203_\.php
 /_ignition/execute-solution
