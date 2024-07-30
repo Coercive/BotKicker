@@ -23,12 +23,14 @@
 /.+\.rar
 /.+\.save
 /.+\.sql
+/.+\.ssh
 /.+\.swp
 /.+\.tar
 /.+\.tar\.bz2
 /.+\.tar\.gz
 /.+\.tbz2
 /.+\.tgz
+/.+\.yml
 /.+\.zip
 /\.bash_history
 /\.DS_Store
@@ -39,7 +41,9 @@
 /\.ftpconfig
 /\.kube
 /\.kube/config
+/\.svn
 /\.svn/wc\.db
+/\.ssh
 /\.vscode/sftp\.json
 /_3001092203_\.php
 /_ignition/execute-solution
@@ -132,11 +136,15 @@ ckfinder
 /cgi-bin/
 /cgi-bin/viewlink
 /chosen\.php
+/cloud-config\.yml
 /cms\.html
 /combined\.php
 /composere?\.php
 /connector\.php
 /config\.json
+/config\.php
+/config\.yml
+/config/database\.php
 /config/production\.json
 /contact/security
 /contato\.php
@@ -161,6 +169,7 @@ cyberwatch
 /defaults\.php
 /disclosure(/|$)
 /dNvo19Yg7JM6jxxu
+/docker-compose\.yml
 /dropdown\.php
 ^/drupal\d+?
 /druid/coordinator
@@ -175,6 +184,7 @@ cyberwatch
 /EmpireCMS
 /ern1\.php7
 /ern1\.php
+/etc/shadow
 /ex\.php
 /fatheaded\.php
 /fgt_lang\.js
@@ -199,6 +209,7 @@ function\.php
 /heads\.php
 /hello\.php
 /help/security
+/id_ecdsa
 /img/about\.php
 /img/cloud\.php
 /images?/about\.php
@@ -319,6 +330,7 @@ php://input
 /sam\.php
 /searchformz\.php
 /searchreplacedb2\.php
+/secrets\.json
 /security(/|$)
 /security-advisories
 /security-contact
