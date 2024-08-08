@@ -200,6 +200,7 @@ function\.php
 /fpc/app/login
 /fpebr\.php
 /ftpsync\.settings
+/foxx\.php
 /gel4y\.php
 /gelay\.php
 /gtoext\.php
@@ -443,6 +444,7 @@ system32
 /ws\.php7?
 /ws/index/getTheLotteryInitList
 /wsoyanz\.php
+/www\.
 /wwwroot\.bz
 /www\.sql
 /wzy\.php
