@@ -12,6 +12,7 @@
 /.+\.bck
 /.+\.bz
 /.+\.bz2
+/.+\.cgi
 /.+\.dat
 /.+\.exe
 /.+\.gz
@@ -94,6 +95,7 @@
 /apple-app-site-association
 /archivarix\.cms\.php
 /array_diff_uassoc\.php
+/aska\.cgi
 /assets/
 /assets/filemanager/dialog\.php
 /assets/fileupload/
@@ -111,6 +113,7 @@ auto_prepend_file
 /bak/sftp-config\.json
 /base\.php
 /bash\.alfa
+/bbs\.cgi
 /betdiyffse\.php
 /bitwise\.php
 /blkbefqor\.php
@@ -121,6 +124,7 @@ auto_prepend_file
 /cgialfa
 /cgi-bin
 /cgi-bin/viewimg
+/cgi/guestbook
 /CHANGELOG\.txt
 /chosen\.php
 /chomper\.php
@@ -201,8 +205,10 @@ function\.php
 /fpebr\.php
 /ftpsync\.settings
 /foxx\.php
+/gastenboek\.php
 /gel4y\.php
 /gelay\.php
+/guestbook\.php
 /gtoext\.php
 /h4xor\.php
 /hekenews
@@ -228,6 +234,7 @@ function\.php
 /install\.php
 /ioxi001\.php7
 /ioxi002\.php7
+/jax_guestbook\.php
 /jp1dw\.php
 /jqury-cdn1\.js\.php
 /jr\.php
@@ -241,6 +248,7 @@ launchplatform
 /legal/privacy-policy
 /licence\.txt
 /libraries/phpmailer/updates\.php
+/light\.cgi
 /link-template-cron\.php
 /login\.aspx
 /login\.php
@@ -259,6 +267,7 @@ matomo\.cloud
 /misc/drupal\.js
 /mixins\.php
 /mnTIQa1kuWt\.php
+/modules\.php
 /ms-files-private\.php
 /my\.bz
 /myadmin
@@ -279,6 +288,7 @@ matomo\.cloud
 /page-30c\.php
 passwd
 /payment\.php
+/payment/index\.php
 /perl\.alfa
 /php\.exe
 /php-cgi\.exe
@@ -341,6 +351,7 @@ php://input
 /security-policy
 /security-report
 /sellers?\.php
+/seo-joy\.cgi
 /server(/|$)
 server\.key
 servlets?
@@ -456,5 +467,6 @@ system32
 /Y29uZGl0aW
 /yanz\.php
 /yeti/\.git/HEAD
+/yybbs\.cgi
 /z\.php
 /zaco\.php
