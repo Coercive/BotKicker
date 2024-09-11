@@ -19,22 +19,32 @@ class UrlKicker extends AbstractKicker
 	/**
 	 * @var string Input IP
 	 */
-    private string $ip = '';
+	private string $ip = '';
 
 	/**
 	 * @var string User agent
 	 */
-    private string $agent = '';
+	private string $agent = '';
 
 	/**
 	 * @var string Url before clear
 	 */
-    private string $rawUrl = '';
+	private string $rawUrl = '';
 
 	/**
 	 * @var string Url after clear
 	 */
-    private string $url = '';
+	private string $url = '';
+
+	/**
+	 * Problem: when use "access to" in Google Chrome browser, on shorten url in facebook post, the url keeps the ellipsis.
+	 *
+	 * @return bool
+	 */
+	private function detectMalformedShortcuts(): bool
+	{
+		return (bool) preg_match('`\.{3}`', $this->url);
+	}
 
 	/**
 	 * @param string $url
@@ -101,53 +111,53 @@ class UrlKicker extends AbstractKicker
 	 *
 	 * @return $this
 	 */
-    public function automatic(): self
+	public function automatic(): self
 	{
-        return $this
-            ->detectAgent()
-            ->detectIp()
-            ->detectUrl();
-    }
+		return $this
+			->detectAgent()
+			->detectIp()
+			->detectUrl();
+	}
 
 	/**
 	 * Get IP from $_SERVER
 	 *
 	 * @return $this
 	 */
-    public function detectIp(): self
+	public function detectIp(): self
 	{
 		$this->ip = (string) filter_input(INPUT_SERVER, 'REMOTE_ADDR', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        return $this;
-    }
+		return $this;
+	}
 
 	/**
 	 * @param string $ip
 	 * @return $this
 	 */
-    public function setIp(string $ip): self
+	public function setIp(string $ip): self
 	{
 		$this->ip = $ip;
-        return $this;
-    }
+		return $this;
+	}
 
 	/**
 	 * @return string
 	 */
-    public function getIp(): string
+	public function getIp(): string
 	{
-        return $this->ip;
-    }
+		return $this->ip;
+	}
 
 	/**
 	 * Get UAGENT from $_SERVER
 	 *
 	 * @return $this
 	 */
-    public function detectAgent(): self
+	public function detectAgent(): self
 	{
 		$this->agent = (string) filter_input(INPUT_SERVER, 'HTTP_USER_AGENT', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 		return $this;
-    }
+	}
 
 	/**
 	 * @param string $agent
@@ -172,16 +182,16 @@ class UrlKicker extends AbstractKicker
 	 *
 	 * @return $this
 	 */
-    public function detectUrl(): self
+	public function detectUrl(): self
 	{
 		$url = (string) filter_input(INPUT_SERVER, 'REQUEST_URI', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        if(!$url) {
+		if(!$url) {
 			$url = (string) filter_input(INPUT_SERVER, 'SCRIPT_URL', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        }
+		}
 		$this->rawUrl = $url;
 		$this->url = $this->clearUrl($url);
 		return $this;
-    }
+	}
 
 	/**
 	 * @param string $url
@@ -214,5 +224,16 @@ class UrlKicker extends AbstractKicker
 	public function getRawUrl(): string
 	{
 		return $this->rawUrl;
+	}
+
+	/**
+	 * @return bool
+	 */
+	public function isMalformed(): bool
+	{
+		if($this->detectMalformedShortcuts()) {
+			return true;
+		}
+		return false;
 	}
 }
