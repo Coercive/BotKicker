@@ -92,6 +92,14 @@ class IpKicker extends AbstractKicker
 	}
 
 	/**
+	 * @return array
+	 */
+	public function getBrevoList(): array
+	{
+		return $this->getDataFromFiles([self::BREVO_FILE]);
+	}
+
+	/**
 	 * Retrieve dynamicaly all IPv4 & IPv6 from Facebook
 	 *
 	 * @link https://developers.facebook.com/docs/sharing/webmasters/crawler/
