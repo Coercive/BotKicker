@@ -1,0 +1,8 @@
+# Brevo / SendInBlue Ipv4
+# https://help.brevo.com/hc/fr/articles/208848409--Plages-IP-de-Brevo-am%C3%A9liorer-la-d%C3%A9livrabilit%C3%A9-des-emails-B2B
+
+1.179.112.0/20
+77.32.148.0/24
+77.32.149.0/24
+185.41.28.0/24
+212.146.244.0/24

@@ -17,6 +17,7 @@ class IpKicker extends AbstractKicker
 	const GOOGLE_FILE = __DIR__ . '/../list/ip/google';
 	const GOOGLEBOT_FILE = __DIR__ . '/../list/ip/googlebot';
 	const FACEBOOKBOT_FILE = __DIR__ . '/../list/ip/facebookbot';
+	const BREVO_FILE = __DIR__ . '/../list/ip/brevo';
 
 	const MAILJET_FILE = __DIR__ . '/../list/ip/mailjet';
 	const STRIPE_FILE = __DIR__ . '/../list/ip/stripe';
