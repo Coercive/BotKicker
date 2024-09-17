@@ -109,14 +109,28 @@ class IpKicker extends AbstractKicker
 	 */
 	public function getFacebookList(bool $ipv6 = false): array
 	{
-		$list = [];
-		$cmd = "whois -h whois.radb.net -- '-i origin AS32934' | grep ^route" . ($ipv6 ? '6' : '') . ':';
-		if(exec($cmd, $output)) {
-			foreach ($output as $line) {
-				$list[] = preg_replace('`route\d?:\s+`', '', $line);
-			}
+		return $this->getFromASN('AS32934', $ipv6);
+	}
+
+	/**
+	 * Retrieve dynamicaly all IPv4 & IPv6 from LinkedIn
+	 *
+	 * @doc Search LinkedIn ASN from bgp.he.net or www.cidr-report.org
+	 *
+	 * @param bool $ipv6 [optional]
+	 * @return string[]
+	 */
+	public function getLinkedInList(bool $ipv6 = false): array
+	{
+		# Retrieved from https://bgp.he.net/search?search%5Bsearch%5D=LINKEDIN&commit=Search
+		$asns = ['AS13443', 'AS14413', 'AS20049', 'AS20366', 'AS40793', 'AS55163', 'AS132406', 'AS132466', 'AS137709', 'AS202745'];
+
+		$ips = [];
+		foreach ($asns as $asn) {
+			$list = $this->getFromASN($asn, $ipv6);
+			$ips = array_merge($ips, $list);
 		}
-		return $list;
+		return $ips;
 	}
 
 	/**
@@ -142,5 +156,24 @@ class IpKicker extends AbstractKicker
 		$bing = $lk->match($ip, 'search.msn.com', true);
 
 		return new Status($bing, $this->inputlist, [$ip]);
+	}
+
+	/**
+	 * Retrieve dynamicaly all IPv4 & IPv6 from "Autonomous System Numbers" (ASN)
+	 *
+	 * @param string $asn
+	 * @param bool|null $ipv6 [optional]
+	 * @return string[]
+	 */
+	public function getFromASN(string $asn, ? bool $ipv6 = null): array
+	{
+		$list = [];
+		$cmd = "whois -h whois.radb.net -- '-i origin $asn' | grep ^route" . ($ipv6 === true ? '6' : '') . ($ipv6 !== null ? ':' : '');
+		if(exec($cmd, $output)) {
+			foreach ($output as $line) {
+				$list[] = preg_replace('`route\d?:\s+`', '', $line);
+			}
+		}
+		return $list;
 	}
 }
