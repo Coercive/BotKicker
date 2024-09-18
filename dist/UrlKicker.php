@@ -236,4 +236,13 @@ class UrlKicker extends AbstractKicker
 		}
 		return false;
 	}
+
+	/**
+	 * @param string $str
+	 * @return bool
+	 */
+	public function find(string $str): bool
+	{
+		return false !== mb_strpos($this->url, $str);
+	}
 }
