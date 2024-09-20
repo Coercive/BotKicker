@@ -216,6 +216,7 @@ function\.php
 /heads\.php
 /hello\.php
 /help/security
+/hexor\.php
 /id_ecdsa
 /img/about\.php
 /img/cloud\.php
@@ -399,6 +400,7 @@ system32
 /unzipper\.php
 /updates\.php
 /upload\.php
+/upload/file/hex\.php
 /ups\.php
 /user/password
 /Ueditor/net/controller\.ashx
