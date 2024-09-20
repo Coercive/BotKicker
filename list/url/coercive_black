@@ -165,6 +165,7 @@ cyberwatch
 ^/dashboard
 /data/admin/allowurl\.txt
 /data/conf/version\.txt
+/data/runtime/Logs/Portal
 /database/
 /dbadmin/
 /db(/|$)
