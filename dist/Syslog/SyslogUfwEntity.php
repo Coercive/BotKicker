@@ -142,17 +142,17 @@ class SyslogUfwEntity
 			return false;
 		}
 
-		# If only one ICMPv6 protocal, it's maybe just a check
+		# If only one ICMP / ICMPv6 protocal, it's maybe just a check
 		foreach ($this->protocols as $protocol) {
-			if(count($this->protocols) === 1 && $protocol === 'ICMPv6') {
+			if(count($this->protocols) === 1 && in_array($protocol, ['ICMP', 'ICMPv6'], true)) {
 				return false;
 			}
 			break;
 		}
 
-		# Get out everything that is not TCP
+		# Get out everything that is not TCP / ICMP
 		foreach ($this->protocols as $protocol) {
-			if(!in_array($protocol, ['TCP', 'ICMPv6'], true)) {
+			if(!in_array($protocol, ['TCP', 'ICMP', 'ICMPv6'], true)) {
 				return true;
 			}
 		}
