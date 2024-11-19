@@ -47,6 +47,16 @@ class UrlKicker extends AbstractKicker
 	}
 
 	/**
+	 * Problem: many users have urls that end in /null across all browsers and devices.
+	 *
+	 * @return bool
+	 */
+	private function detectMalformedNullEnding(): bool
+	{
+		return (bool) preg_match('`/null$`', $this->url);
+	}
+
+	/**
 	 * @param string $url
 	 * @return string
 	 */
@@ -232,6 +242,9 @@ class UrlKicker extends AbstractKicker
 	public function isMalformed(): bool
 	{
 		if($this->detectMalformedShortcuts()) {
+			return true;
+		}
+		if($this->detectMalformedNullEnding()) {
 			return true;
 		}
 		return false;
