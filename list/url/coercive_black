@@ -417,6 +417,7 @@ ckfinder
 /contato\.php
 /content\.php
 /content-link\.php
+/controller\.php
 /cool\.php
 /core\.php
 /core/misc/drupal\.js
@@ -1212,6 +1213,7 @@ sftp-config\.json
 /ss\.php
 /ssh\.php
 /st\.php
+/static/common/user
 /static/mobile/user\.html
 /store\.php
 /stupid\.php
@@ -1306,6 +1308,7 @@ system32
 /ucen\.php
 /udp\.php
 /Ueditor/
+/uedit/php
 /um3r\.php
 /Umerrock\.asp;\.txt
 /Umerrock\.php
