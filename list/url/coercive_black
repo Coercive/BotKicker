@@ -1019,6 +1019,7 @@ php://input
 /print\.php
 /Priv\.php
 /priv\d+\.php
+/priv8\.php
 /private?\.php
 /pro\.php
 /product\.php
@@ -1213,6 +1214,7 @@ sftp-config\.json
 /ss\.php
 /ssh\.php
 /st\.php
+/sts\.php
 /static/common/user
 /static/mobile/user\.html
 /store\.php
@@ -1439,6 +1441,7 @@ system32
 /wp-head\.php
 /wp-header
 /wp-hmdra\.php
+/wp-hoard\.php
 /wp-iav\.php
 /wp-incleude\.php
 /wp-includes
@@ -1452,6 +1455,7 @@ system32
 /wp-ldd\.php
 /wp-log\.php
 /wp-login
+/wp-l0gin
 /wp-logo\.php
 /wp-mailcek\.php
 /wp-mails\.php
