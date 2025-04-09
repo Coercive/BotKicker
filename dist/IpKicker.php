@@ -134,6 +134,30 @@ class IpKicker extends AbstractKicker
 	}
 
 	/**
+	 * Get all IPv4 from Paybox
+	 *
+	 * @link https://www.paybox.com/espace-integrateur-documentation/la-solution-paybox-system/urls-dappels-et-adresses-ip/
+	 *
+	 * @return string[]
+	 */
+	public function getPayboxList(): array
+	{
+		return [
+			'195.25.7.146',
+			'195.25.67.22',
+			'194.2.160.80',
+			'194.2.160.82',
+			'194.2.160.91',
+			'195.25.67.0',
+			'195.25.67.2',
+			'195.25.67.11',
+			'195.25.7.146',
+			'194.2.122.190',
+			'195.25.67.22',
+		];
+	}
+
+	/**
 	 * Detect if Bingbot, based on domain 'search.msn.com'
 	 *
 	 * @link https://www.bing.com/webmasters/help/how-to-verify-bingbot-3905dc26
