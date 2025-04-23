@@ -134,6 +134,18 @@ class IpKicker extends AbstractKicker
 	}
 
 	/**
+	 * Get all IPv4 from Prolexis
+	 *
+	 * @return string[]
+	 */
+	public function getProlexisList(): array
+	{
+		return [
+			'54.36.182.4',
+		];
+	}
+
+	/**
 	 * Get all IPv4 from Paybox
 	 *
 	 * @link https://www.paybox.com/espace-integrateur-documentation/la-solution-paybox-system/urls-dappels-et-adresses-ip/
