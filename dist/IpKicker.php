@@ -134,6 +134,22 @@ class IpKicker extends AbstractKicker
 	}
 
 	/**
+	 * Get all IPv4 from PayPlug webhook payment notification
+	 *
+	 * @return string[]
+	 */
+	public function getPayPlugList(): array
+	{
+		return [
+			'52.17.55.154',
+			'52.209.87.92',
+			'54.77.126.191',
+			'15.188.38.112',
+			'13.36.216.58',
+		];
+	}
+
+	/**
 	 * Get all IPv4 from Prolexis
 	 *
 	 * @return string[]
