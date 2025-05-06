@@ -100,6 +100,71 @@ class IpKicker extends AbstractKicker
 	}
 
 	/**
+	 * @param string $url
+	 * @param bool $ipv6
+	 * @return array
+	 */
+	private function extractGoogleList(string $url, bool $ipv6): array
+	{
+		$json = file_get_contents($url);
+		if (!$json) {
+			return [];
+		}
+
+		$data = json_decode($json, true);
+		if ($data === null || !isset($data['prefixes'])) {
+			return [];
+		}
+
+		$ipList = [];
+		foreach ($data['prefixes'] as $prefix) {
+			if (!$ipv6 && isset($prefix['ipv4Prefix'])) {
+				$ipList[] = $prefix['ipv4Prefix'];
+			}
+			elseif ($ipv6 & isset($prefix['ipv6Prefix'])) {
+				$ipList[] = $prefix['ipv6Prefix'];
+			}
+		}
+		return $ipList;
+	}
+
+	/**
+	 * Retrieve dynamicaly all IPv4 & IPv6 from Google User
+	 *
+	 * @param bool $ipv6 [optional]
+	 * @return array
+	 */
+	public function getGoogleUserList(bool $ipv6 = false): array
+	{
+		$url = 'https://www.gstatic.com/ipranges/goog.json';
+		return $this->extractGoogleList($url, $ipv6);
+	}
+
+	/**
+	 * Retrieve dynamicaly all IPv4 & IPv6 from Google Cloud
+	 *
+	 * @param bool $ipv6 [optional]
+	 * @return array
+	 */
+	public function getGoogleCloudList(bool $ipv6 = false): array
+	{
+		$url = 'https://www.gstatic.com/ipranges/cloud.json';
+		return $this->extractGoogleList($url, $ipv6);
+	}
+
+	/**
+	 * Retrieve dynamicaly all IPv4 & IPv6 from Google Cloud
+	 *
+	 * @param bool $ipv6 [optional]
+	 * @return array
+	 */
+	public function getGoogleBotList(bool $ipv6 = false): array
+	{
+		$url = 'https://developers.google.com/static/search/apis/ipranges/googlebot.json';
+		return $this->extractGoogleList($url, $ipv6);
+	}
+
+	/**
 	 * Retrieve dynamicaly all IPv4 & IPv6 from Facebook
 	 *
 	 * @link https://developers.facebook.com/docs/sharing/webmasters/crawler/
