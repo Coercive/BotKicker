@@ -175,4 +175,44 @@ abstract class AbstractLookUp
 
 		return $match;
 	}
+
+	/**
+	 * Match ip vs domain (PHP NATIVE MODE)
+	 *
+	 * @param string $ip
+	 * @param string $domain
+	 * @param bool $reverse [optional]
+	 * @return bool
+	 */
+	public function matchNative(string $ip, string $domain, bool $reverse = false): bool
+	{
+		if (!filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4)) {
+			return false;
+		}
+
+		$domain = trim(rtrim($domain, '.'));
+
+		# Reverse DNS (IP -> Hostname) : lookup failed or returned IP itself
+		$hostname = gethostbyaddr($ip);
+		if ($hostname === $ip) {
+			return false;
+		}
+
+		# Check if hostname end with the givent domain
+		if (!preg_match('`' . preg_quote($domain, '`') . '$`i', $hostname)) {
+			return false;
+		}
+
+		if(!$reverse) {
+			return true;
+		}
+
+		# DNS directly (Hostname -> IP) : lookup failed
+		$resolvedIp = gethostbyname($hostname);
+		if ($resolvedIp === $hostname) {
+			return false;
+		}
+
+		return $ip === $resolvedIp;
+	}
 }
