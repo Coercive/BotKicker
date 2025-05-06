@@ -1,7 +1,6 @@
 # Some elements that must be blocked, but in a more flexible way.
 
 /\.well-known/acme-challenge
-/\.well-known/apple-app-site-association
 /\.well-known/assetlinks\.json
 /\.well-known/ai\.txt
 /\.well-known/ai-plugin\.json
@@ -16,6 +15,7 @@
 /\.well-known/traffic-advice
 /ads\.txt
 /ai\.txt
+/apple-app-site-association
 /autodiscover/autodiscover\.xml
 /humans\.txt
 /security\.txt
