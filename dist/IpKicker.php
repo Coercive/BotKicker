@@ -153,7 +153,8 @@ class IpKicker extends AbstractKicker
 	}
 
 	/**
-	 * Retrieve dynamicaly all IPv4 & IPv6 from Google Cloud
+	 * Retrieve dynamicaly all IPv4 & IPv6 from Google Bot
+	 * @doc https://developers.google.com/search/docs/crawling-indexing/verifying-googlebot
 	 *
 	 * @param bool $ipv6 [optional]
 	 * @return array
@@ -161,6 +162,45 @@ class IpKicker extends AbstractKicker
 	public function getGoogleBotList(bool $ipv6 = false): array
 	{
 		$url = 'https://developers.google.com/static/search/apis/ipranges/googlebot.json';
+		return $this->extractGoogleList($url, $ipv6);
+	}
+
+	/**
+	 * Retrieve dynamicaly all IPv4 & IPv6 from Google Special Crawlers
+	 * @doc https://developers.google.com/search/docs/crawling-indexing/verifying-googlebot
+	 *
+	 * @param bool $ipv6 [optional]
+	 * @return array
+	 */
+	public function getGoogleSpecialCrawlersList(bool $ipv6 = false): array
+	{
+		$url = 'https://developers.google.com/search/apis/ipranges/special-crawlers.json';
+		return $this->extractGoogleList($url, $ipv6);
+	}
+
+	/**
+	 * Retrieve dynamicaly all IPv4 & IPv6 from Google User Triggered Fetchers
+	 * @doc https://developers.google.com/search/docs/crawling-indexing/verifying-googlebot
+	 *
+	 * @param bool $ipv6 [optional]
+	 * @return array
+	 */
+	public function getGoogleUserTriggeredFetchersList(bool $ipv6 = false): array
+	{
+		$url = 'https://developers.google.com/search/apis/ipranges/user-triggered-fetchers.json';
+		return $this->extractGoogleList($url, $ipv6);
+	}
+
+	/**
+	 * Retrieve dynamicaly all IPv4 & IPv6 from Google User Triggered Fetchers Google
+	 * @doc https://developers.google.com/search/docs/crawling-indexing/verifying-googlebot
+	 *
+	 * @param bool $ipv6 [optional]
+	 * @return array
+	 */
+	public function getGoogleUserTriggeredFetchersGoogleList(bool $ipv6 = false): array
+	{
+		$url = 'https://developers.google.com/search/apis/ipranges/user-triggered-fetchers-google.json';
 		return $this->extractGoogleList($url, $ipv6);
 	}
 
