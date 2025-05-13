@@ -18,6 +18,7 @@ class IpKicker extends AbstractKicker
 	const GOOGLEBOT_FILE = __DIR__ . '/../list/ip/googlebot';
 	const FACEBOOKBOT_FILE = __DIR__ . '/../list/ip/facebookbot';
 	const BREVO_FILE = __DIR__ . '/../list/ip/brevo';
+	const LETSENCRYPT_FILE = __DIR__ . '/../list/ip/letsencrypt';
 
 	const MAILJET_FILE = __DIR__ . '/../list/ip/mailjet';
 	const STRIPE_FILE = __DIR__ . '/../list/ip/stripe';
@@ -97,6 +98,14 @@ class IpKicker extends AbstractKicker
 	public function getBrevoList(): array
 	{
 		return $this->getDataFromFiles([self::BREVO_FILE]);
+	}
+
+	/**
+	 * @return array
+	 */
+	public function getLetsEncryptList(): array
+	{
+		return $this->getDataFromFiles([self::LETSENCRYPT_FILE]);
 	}
 
 	/**
