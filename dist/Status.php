@@ -16,8 +16,11 @@ class Status
 	/** @var bool BotKicker state */
 	private bool $state;
 
-	/** @var array Current check */
+	/** @var array Current input list */
 	private array $inputs;
+
+	/** @var string Current input checked */
+	private string $input;
 
 	/** @var array Current list elements that match */
 	private array $matches;
@@ -27,12 +30,14 @@ class Status
 	 *
 	 * @param bool $state
 	 * @param array $inputs [optional]
+	 * @param string $input [optional]
 	 * @param array $matches [optional]
 	 */
-	public function __construct(bool $state, array $inputs = [], array $matches = [])
+	public function __construct(bool $state, array $inputs = [], string $input = '', array $matches = [])
 	{
 		$this->state = $state;
 		$this->inputs = $inputs;
+		$this->input = $input;
 		$this->matches = $matches;
 	}
 
@@ -50,6 +55,14 @@ class Status
 	public function getInputs(): array
 	{
 		return $this->inputs;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getInput(): string
+	{
+		return $this->input;
 	}
 
 	/**

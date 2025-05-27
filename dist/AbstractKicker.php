@@ -1,8 +1,6 @@
 <?php
 namespace Coercive\Security\BotKicker;
 
-use Exception;
-
 /**
  * BOT KICKER
  *
@@ -26,6 +24,36 @@ abstract class AbstractKicker
 
 	/** @var array List for match */
 	protected array $inputlist = [];
+
+	/**
+	 * @param ...$arrays
+	 * @return array
+	 */
+	static function flattenMerge(...$arrays): array
+	{
+		$result = [];
+
+		$flatten = function ($input) use (&$flatten, &$result) {
+			foreach ($input as $value) {
+				if (is_array($value)) {
+					$flatten($value);
+				}
+				elseif (is_scalar($value) || is_string($value)) {
+					$result[] = $value;
+				}
+			}
+		};
+
+		foreach ($arrays as $array) {
+			if (!is_array($array)) {
+				$array = [$array];
+			}
+			$flatten($array);
+		}
+
+		return $result;
+	}
+
 
 	/**
 	 * GET DATA FROM FILE
@@ -264,7 +292,7 @@ abstract class AbstractKicker
 		if($wl = $this->getWhiteList()) {
 			foreach ($this->inputlist as $input) {
 				if($matches = $this->match($input, $wl)) {
-					return new Status(true, $this->inputlist, $matches);
+					return new Status(true, $this->inputlist, $input, $matches);
 				}
 			}
 		}
@@ -273,7 +301,7 @@ abstract class AbstractKicker
 		if($bl = $this->getBlackList()) {
 			foreach ($this->inputlist as $input) {
 				if($matches = $this->match($input, $bl)) {
-					return new Status(false, $this->inputlist, $matches);
+					return new Status(false, $this->inputlist, $input, $matches);
 				}
 			}
 		}

@@ -321,7 +321,7 @@ class IpKicker extends AbstractKicker
 		}
 		$bing = $lk->match($ip, 'search.msn.com', true);
 
-		return new Status($bing, $this->inputlist, [$ip]);
+		return new Status($bing, $this->inputlist, $ip, [$ip]);
 	}
 
 	/**
