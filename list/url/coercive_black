@@ -42,7 +42,11 @@
 /.+\.tgz
 /.+\.yml
 /.+\.zip
+/\.aws
+/\.azure
+/\.babelrc
 /\.bash_history
+/\.c9
 /\.conf\.php
 /\.dha\.php
 /\.DS_Store
