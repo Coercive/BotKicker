@@ -719,6 +719,7 @@ cyberwatch
 /iranshell\.php
 /ironshell\.php
 /install\.php
+/installer\.php
 /ioxi001\.php7?
 /ioxi002\.php7?
 /issue\.php
@@ -1452,6 +1453,7 @@ system32
 /wp-info
 /wp-init\.php
 /wp-installer\.php
+/wp/installer\.php
 /wp-js\.php
 /wp-json
 /wp-ldd\.php
