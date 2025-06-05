@@ -320,6 +320,7 @@ auto_prepend_file
 /bnet\.php
 /bps\.php
 /browse\.php
+/bugbountytesting
 /Bulle\.php
 /bump\.php
 /bv7binary\.php
