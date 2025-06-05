@@ -1006,6 +1006,7 @@ php://input
 /Pirates\.php
 /pirja\.php
 /pler\.php
+/plesk-stat
 /plugins?\.php
 /pma\d*(/|$)
 /pma/index\.php
