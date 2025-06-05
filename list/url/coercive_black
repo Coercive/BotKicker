@@ -1009,6 +1009,7 @@ php://input
 /pler\.php
 /plesk-stat
 /plugins?\.php
+/plus/mytag_js
 /pma\d*(/|$)
 /pma/index\.php
 /pop\.php
