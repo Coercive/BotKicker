@@ -3,3 +3,8 @@
 # Cloaking or redirect abuse
 https?:\/\/
 www\.
+
+# API bad flood /index.php?a=get_token&c=ajax&m=api&name=admin_id
+get_token
+ajax
+admin_id
