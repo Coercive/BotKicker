@@ -140,7 +140,7 @@ class ModSecLogParser
 	/**
 	 * @return ModSecLogEntity[]
 	 */
-	public function findAccessByIp(): array
+	public function filterAccessByIp(): array
 	{
 		return $this->search(function (ModSecLogEntity $entry) {
 			$host = $entry->getHost();
@@ -148,6 +148,56 @@ class ModSecLogParser
 				return true;
 			}
 			return false;
+		});
+	}
+
+	/**
+	 * @return ModSecLogEntity[]
+	 */
+	public function filterGetRequests(): array
+	{
+		return $this->search(function (ModSecLogEntity $entry) {
+			return $entry->getMethod() === 'GET';
+		});
+	}
+
+	/**
+	 * @return ModSecLogEntity[]
+	 */
+	public function filterPostRequests(): array
+	{
+		return $this->search(function (ModSecLogEntity $entry) {
+			return $entry->getMethod() === 'POST';
+		});
+	}
+
+	/**
+	 * @return ModSecLogEntity[]
+	 */
+	public function filterHeadRequests(): array
+	{
+		return $this->search(function (ModSecLogEntity $entry) {
+			return $entry->getMethod() === 'HEAD';
+		});
+	}
+
+	/**
+	 * @return ModSecLogEntity[]
+	 */
+	public function filterOptionsRequests(): array
+	{
+		return $this->search(function (ModSecLogEntity $entry) {
+			return $entry->getMethod() === 'OPTIONS';
+		});
+	}
+
+	/**
+	 * @return ModSecLogEntity[]
+	 */
+	public function filterUnallowedMethodRequests(): array
+	{
+		return $this->search(function (ModSecLogEntity $entry) {
+			return !in_array($entry->getMethod(), ['GET', 'HEAD', 'POST', 'OPTIONS'], true);
 		});
 	}
 }
