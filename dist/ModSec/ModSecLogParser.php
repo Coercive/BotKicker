@@ -144,6 +144,9 @@ class ModSecLogParser
 	{
 		return $this->search(function (ModSecLogEntity $entry) {
 			$host = $entry->getHost();
+			if(strpos($host, ':')) {
+				$host = explode(':', $host)[0] ?? '';
+			}
 			if ($host && filter_var($host, FILTER_VALIDATE_IP)) {
 				return true;
 			}
