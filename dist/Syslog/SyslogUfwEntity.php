@@ -13,6 +13,9 @@ namespace Coercive\Security\BotKicker\Syslog;
  */
 class SyslogUfwEntity
 {
+	/** @var SyslogUfwLineEntity[] */
+	private array $lines = [];
+
 	private string $ip;
 
 	private array $protocols = [];
@@ -22,6 +25,81 @@ class SyslogUfwEntity
 	private int $count = 0;
 
 	private int $reset = 0;
+
+	private int $in = 0;
+
+	private int $out = 0;
+
+	private int $fw = 0;
+
+	/**
+	 * @param string $protocol
+	 * @return $this
+	 */
+	private function addProtocol(string $protocol): self
+	{
+		if($protocol) {
+			$this->protocols[$protocol] = $protocol;
+		}
+		return $this;
+	}
+
+	/**
+	 * @param int|null $port
+	 * @return $this
+	 */
+	private function addPort(? int $port): self
+	{
+		if($port) {
+			$this->ports[$port] = $port;
+		}
+		return $this;
+	}
+
+	/**
+	 * @return $this
+	 */
+	private function reset(): self
+	{
+		$this->reset++;
+		return $this;
+	}
+
+	/**
+	 * @return $this
+	 */
+	private function in(): self
+	{
+		$this->in++;
+		return $this;
+	}
+
+	/**
+	 * @return $this
+	 */
+	private function out(): self
+	{
+		$this->out++;
+		return $this;
+	}
+
+	/**
+	 * @return $this
+	 */
+	private function fw(): self
+	{
+		$this->fw++;
+		return $this;
+	}
+
+	/**
+	 * @return $this
+	 */
+	private function count(): self
+	{
+		$this->count++;
+		return $this;
+	}
 
 	/**
 	 * SyslogUfwEntity constructor.
@@ -43,15 +121,41 @@ class SyslogUfwEntity
 	}
 
 	/**
-	 * @param string $protocol
+	 * @param SyslogUfwLineEntity $line
 	 * @return $this
 	 */
-	public function addProtocol(string $protocol): self
+	public function addLine(SyslogUfwLineEntity $line):self
 	{
-		if($protocol) {
-			$this->protocols[$protocol] = $protocol;
+		$this->lines[] = $line;
+
+		if($line->getReset()) {
+			$this->reset();
 		}
+		else {
+			if($line->isIncoming()) {
+				$this->in();
+			}
+			elseif($line->isOutgoing()) {
+				$this->out();
+			}
+			elseif($line->isForwarded()) {
+				$this->fw();
+			}
+			$this
+				->addProtocol($line->getProtocol())
+				->addPort($line->getDestinationPort())
+				->count();
+		}
+
 		return $this;
+	}
+
+	/**
+	 * @return SyslogUfwLineEntity[]
+	 */
+	public function getLines(): array
+	{
+		return $this->lines;
 	}
 
 	/**
@@ -71,18 +175,6 @@ class SyslogUfwEntity
 	}
 
 	/**
-	 * @param string $port
-	 * @return $this
-	 */
-	public function addPort(string $port): self
-	{
-		if($port) {
-			$this->ports[$port] = $port;
-		}
-		return $this;
-	}
-
-	/**
 	 * @return array
 	 */
 	public function getPorts(): array
@@ -99,15 +191,6 @@ class SyslogUfwEntity
 	}
 
 	/**
-	 * @return $this
-	 */
-	public function count(): self
-	{
-		$this->count++;
-		return $this;
-	}
-
-	/**
 	 * @return int
 	 */
 	public function getCount(): int
@@ -116,12 +199,27 @@ class SyslogUfwEntity
 	}
 
 	/**
-	 * @return $this
+	 * @return int
 	 */
-	public function reset(): self
+	public function getIn(): int
 	{
-		$this->reset++;
-		return $this;
+		return $this->in;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function getOut(): int
+	{
+		return $this->out;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function getFw(): int
+	{
+		return $this->fw;
 	}
 
 	/**

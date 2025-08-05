@@ -15,11 +15,6 @@ use Exception;
  */
 class SyslogUfw
 {
-	const reg_ip = "`\sSRC=([a-f\d.:]+)\s`i";
-	const reg_protocol = "`\sPROTO=(\w+)\s`i";
-	const reg_port = "`\sDPT=(\d+)\s`i";
-	const reg_flag_RST = "`\s(RST)\s`i";
-
 	private string $path;
 
 	/** @var SyslogUfwEntity[]  */
@@ -63,29 +58,15 @@ class SyslogUfw
 			}
 
 			# Retrieve needed parts
-			preg_match(self::reg_ip, $row, $m);
-			$ip = $m[1] ?? '';
-			preg_match(self::reg_protocol, $row, $m);
-			$protocol = $m[1] ?? '';
-			preg_match(self::reg_port, $row, $m);
-			$port = $m[1] ?? '';
-			preg_match(self::reg_flag_RST, $row, $m);
-			$reset = boolval($m[1] ?? false);
-			if(!$ip || !$protocol) {
+			$line = new SyslogUfwLineEntity($row);
+			if($line->getErrors()) {
 				$this->errors[] = $row;
 				continue;
 			}
 
 			# Adding data, except for reset
-			$entity = $this->getEntity($ip);
-			if($reset) {
-				$entity->reset();
-			}
-			else {
-				$entity->addProtocol($protocol)
-					->addPort($port)
-					->count();
-			}
+			$entity = $this->getEntity($line->getIp());
+			$entity->addLine($line);
 		}
 
 		# Close file
