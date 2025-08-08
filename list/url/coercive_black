@@ -546,6 +546,7 @@ cyberwatch
 /doc\.php
 /docindex\.php
 /docker-compose\.yml
+/doiconvs\.php
 /dom\.php
 /domain\.php
 /done\.php
@@ -652,6 +653,7 @@ cyberwatch
 /gaza\.php
 /gazashell\.php
 /gca\.php
+/gdftps\.php
 /gec\d+\.php
 /gecko-new\.php
 /gecko\.php
@@ -754,6 +756,7 @@ cyberwatch
 /inje3ctor\.php
 /inject\.php
 /injection\.php
+/ip$
 /ipt\.php
 /inputs\.php
 /iranshell\.php
@@ -928,6 +931,7 @@ launchplatform
 /meiwei\.php
 /mek\.php
 /meki\.php
+/memberfuns\.php
 /memek\.php
 /message\.php
 /mia\.php
@@ -942,6 +946,7 @@ launchplatform
 /miyabajingankoe\.php
 /mmk\.php
 /mnTIQa1kuWt\.php
+/moddofuns\.php
 /modules\.php
 /module?s?\.php
 /moo?m\.php
