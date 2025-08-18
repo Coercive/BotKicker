@@ -85,6 +85,7 @@
 /\.azure
 /\.babelrc
 /\.bash_history
+/\.bod
 /\.c9
 /\.conf\.php
 /\.dha\.php
@@ -97,6 +98,7 @@
 /\.ftpconfig
 /\.kube
 /\.kube/config
+/\.ll
 /\.svn
 /\.svn/wc\.db
 /\.ssh
