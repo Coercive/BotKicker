@@ -4,6 +4,9 @@
 https?:\/\/
 www\.
 
+# Spamming links
+</?a
+
 # API bad flood /index.php?a=get_token&c=ajax&m=api&name=admin_id
 get_token
 ^ajax$
