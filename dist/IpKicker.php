@@ -30,7 +30,7 @@ class IpKicker extends AbstractKicker
 	 *
 	 * @return void
 	 */
-	private function initIps()
+	private function initIps(): void
 	{
 		$remote = (string) filter_input(INPUT_SERVER, 'REMOTE_ADDR', FILTER_VALIDATE_IP);
         if($remote) {

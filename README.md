@@ -67,23 +67,6 @@ if($kicker->isRobotsTxtRequested()) { /* do something */ }
 $kicker->allowEmpty( true | false );
 ```
 
-HostKicker only
----------------
-
-You can detect host name from an ip list
-
-```php
-# HostKicker only
-$kicker = new HostKicker;
-
-# Set your ip list
-$kicker->setHostFromIp( [
-	'xxx.xx.xx.x',
-	'yy.yyy.y.y',
-	'...',
-] );
-```
-
 IpKicker only
 -------------
 
@@ -92,10 +75,6 @@ You can use the auto IP detection from IpKicker
 ```php
 # Get auto Ip list detection
 $list = (new IpKicker)->getCurrents();
-
-# Set auto ip list
-$kicker = new HostKicker;
-$kicker->setHostFromIp($list);
 ```
 
 IpKicker can now detect Facebookbot and Bingbot
