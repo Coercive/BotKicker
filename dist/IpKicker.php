@@ -1,6 +1,8 @@
 <?php
 namespace Coercive\Security\BotKicker;
 
+use RuntimeException;
+
 /**
  * BOT KICKER
  *
@@ -14,12 +16,12 @@ namespace Coercive\Security\BotKicker;
 class IpKicker extends AbstractKicker
 {
 	const COERCIVE_FILE = __DIR__ . '/../list/ip/coercive';
+	const BING_FILE = __DIR__ . '/../list/ip/bing';
 	const GOOGLE_FILE = __DIR__ . '/../list/ip/google';
 	const GOOGLEBOT_FILE = __DIR__ . '/../list/ip/googlebot';
 	const FACEBOOKBOT_FILE = __DIR__ . '/../list/ip/facebookbot';
 	const BREVO_FILE = __DIR__ . '/../list/ip/brevo';
 	const LETSENCRYPT_FILE = __DIR__ . '/../list/ip/letsencrypt';
-
 	const MAILJET_FILE = __DIR__ . '/../list/ip/mailjet';
 	const STRIPE_FILE = __DIR__ . '/../list/ip/stripe';
 
@@ -30,41 +32,25 @@ class IpKicker extends AbstractKicker
 	 */
 	private function initIps()
 	{
-		# Get remote and forwarded
-		$remote = (string) filter_input(INPUT_SERVER, 'REMOTE_ADDR', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-		$forwarded = (string) filter_input(INPUT_SERVER, 'HTTP_X_FORWARDED_FOR', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-		$list = [];
-
-		# Process forwarded ips
-		if($forwarded) {
-
-			# Remove spaces
-			$forwarded = str_replace(' ', '', $forwarded);
-
-			# List all ips as array
-			$list = explode(',', $forwarded) ?: [];
-		}
-
-		# Add the basic remote
-		if($remote) {
-			$list[] = $remote;
-		}
-
-		# Unique and not empty
-		$list = array_filter(array_unique($list));
-		if($list) {
-			$this->setInputList($list);
+		$remote = (string) filter_input(INPUT_SERVER, 'REMOTE_ADDR', FILTER_VALIDATE_IP);
+        if($remote) {
+            $this->setInputList([
+                $remote
+            ]);
 		}
 	}
 
 	/**
 	 * IpKicker constructor.
 	 *
+     * @param bool $automatic [optional]
 	 * @return void
 	 */
-	public function __construct()
+	public function __construct(bool $automatic = true)
 	{
-		$this->initIps();
+        if($automatic) {
+            $this->initIps();
+        }
 	}
 
 	/**
@@ -74,6 +60,47 @@ class IpKicker extends AbstractKicker
 	{
 		$this->setBlackListFromFiles([self::COERCIVE_FILE]);
 		return $this;
+	}
+
+    /**
+     * @param bool $dynamic [optional]
+     * @return array
+     */
+	public function getBingList(bool $dynamic = false): array
+	{
+        if(!$dynamic) {
+            return $this->getDataFromFiles([self::BING_FILE]);
+        }
+
+        $url = 'https://www.bing.com/toolbox/bingbot.json';
+
+        $ctx = stream_context_create([
+            'http' => [
+                'method'  => 'GET',
+                'timeout' => 5,
+            ],
+        ]);
+
+        $json = trim(@file_get_contents($url, false, $ctx));
+        if (!$json) {
+            throw new RuntimeException('Cannot retrieve BingBot IP list');
+        }
+
+        $data = json_decode($json, true);
+        if (!is_array($data) || !isset($data['prefixes']) || !is_array($data['prefixes'])) {
+            throw new RuntimeException('Unallowed JSON format for BingBot IP list');
+        }
+
+        $ips = [];
+        foreach ($data['prefixes'] as $prefix) {
+            if ($cidr = $prefix['ipv4Prefix'] ?? null) {
+                $ips[] = $cidr;
+            }
+            if ($cidr = $prefix['ipv6Prefix'] ?? null) {
+                $ips[] = $cidr;
+            }
+        }
+        return $ips;
 	}
 
 	/**
@@ -297,31 +324,6 @@ class IpKicker extends AbstractKicker
 			'194.2.122.190',
 			'195.25.67.22',
 		];
-	}
-
-	/**
-	 * Detect if Bingbot, based on domain 'search.msn.com'
-	 *
-	 * @link https://www.bing.com/webmasters/help/how-to-verify-bingbot-3905dc26
-	 *
-	 * @param string $ip
-	 * @param bool $linux [optional]
-	 * @return Status
-	 */
-	public function isBing(string $ip, bool $linux = false): Status
-	{
-		# Linux cmd host
-		if($linux) {
-			$lk = new HostLookUp;
-		}
-
-		# Microsoft cmd nslookup
-		else {
-			$lk = new NsLookUp;
-		}
-		$bing = $lk->match($ip, 'search.msn.com', true);
-
-		return new Status($bing, $this->inputlist, $ip, [$ip]);
 	}
 
 	/**
