@@ -24,6 +24,7 @@ class IpKicker extends AbstractKicker
 	const LETSENCRYPT_FILE = __DIR__ . '/../list/ip/letsencrypt';
 	const MAILJET_FILE = __DIR__ . '/../list/ip/mailjet';
 	const STRIPE_FILE = __DIR__ . '/../list/ip/stripe';
+	const CLOUDFLARE_FILE = __DIR__ . '/../list/ip/cloudflare';
 
 	/**
 	 * GET IP(s)
@@ -101,6 +102,14 @@ class IpKicker extends AbstractKicker
             }
         }
         return $ips;
+	}
+
+	/**
+	 * @return array
+	 */
+	public function getCloudflareList(): array
+	{
+		return $this->getDataFromFiles([self::CLOUDFLARE_FILE]);
 	}
 
 	/**
