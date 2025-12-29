@@ -17,16 +17,6 @@ class UrlKicker extends AbstractKicker
 	const COERCIVE_GRAY_FILE = __DIR__ . '/../list/url/coercive_gray';
 
 	/**
-	 * @var string Input IP
-	 */
-	private string $ip = '';
-
-	/**
-	 * @var string User agent
-	 */
-	private string $agent = '';
-
-	/**
 	 * @var string Url before clear
 	 */
 	private string $rawUrl = '';
@@ -123,68 +113,7 @@ class UrlKicker extends AbstractKicker
 	 */
 	public function automatic(): self
 	{
-		return $this
-			->detectAgent()
-			->detectIp()
-			->detectUrl();
-	}
-
-	/**
-	 * Get IP from $_SERVER
-	 *
-	 * @return $this
-	 */
-	public function detectIp(): self
-	{
-		$this->ip = (string) filter_input(INPUT_SERVER, 'REMOTE_ADDR', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-		return $this;
-	}
-
-	/**
-	 * @param string $ip
-	 * @return $this
-	 */
-	public function setIp(string $ip): self
-	{
-		$this->ip = $ip;
-		return $this;
-	}
-
-	/**
-	 * @return string
-	 */
-	public function getIp(): string
-	{
-		return $this->ip;
-	}
-
-	/**
-	 * Get UAGENT from $_SERVER
-	 *
-	 * @return $this
-	 */
-	public function detectAgent(): self
-	{
-		$this->agent = (string) filter_input(INPUT_SERVER, 'HTTP_USER_AGENT', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-		return $this;
-	}
-
-	/**
-	 * @param string $agent
-	 * @return $this
-	 */
-	public function setAgent(string $agent): self
-	{
-		$this->agent = $agent;
-		return $this;
-	}
-
-	/**
-	 * @return string
-	 */
-	public function getAgent(): string
-	{
-		return $this->agent;
+		return $this->detectUrl();
 	}
 
 	/**

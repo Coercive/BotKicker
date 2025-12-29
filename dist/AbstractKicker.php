@@ -54,7 +54,6 @@ abstract class AbstractKicker
 		return $result;
 	}
 
-
 	/**
 	 * GET DATA FROM FILE
 	 *
