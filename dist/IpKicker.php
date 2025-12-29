@@ -27,34 +27,6 @@ class IpKicker extends AbstractKicker
 	const CLOUDFLARE_FILE = __DIR__ . '/../list/ip/cloudflare';
 
 	/**
-	 * GET IP(s)
-	 *
-	 * @return void
-	 */
-	private function initIps(): void
-	{
-		$remote = (string) filter_input(INPUT_SERVER, 'REMOTE_ADDR', FILTER_VALIDATE_IP);
-        if($remote) {
-            $this->setInputList([
-                $remote
-            ]);
-		}
-	}
-
-	/**
-	 * IpKicker constructor.
-	 *
-     * @param bool $automatic [optional]
-	 * @return void
-	 */
-	public function __construct(bool $automatic = true)
-	{
-        if($automatic) {
-            $this->initIps();
-        }
-	}
-
-	/**
 	 * @return $this
 	 */
 	public function loadCoerciveList(): IpKicker
