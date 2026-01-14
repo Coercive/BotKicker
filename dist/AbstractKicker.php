@@ -57,7 +57,7 @@ abstract class AbstractKicker
 	/**
 	 * GET DATA FROM FILE
 	 *
-	 * Get array datas from json or yaml file list
+	 * Get array datas from raw file list
 	 *
 	 * @param array $paths
 	 * @return array
