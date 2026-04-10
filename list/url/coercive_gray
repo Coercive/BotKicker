@@ -18,6 +18,8 @@
 /app-ads.txt
 /apple-app-site-association
 /autodiscover/autodiscover\.xml
+/https?://
 /humans\.txt
 /security\.txt
 /sellers\.json
+/www\.
