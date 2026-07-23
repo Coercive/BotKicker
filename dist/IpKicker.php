@@ -284,6 +284,26 @@ class IpKicker extends AbstractKicker
 	}
 
 	/**
+	 * Get all IPv4 from Monetico
+     *
+     * For all calls from your servers to our web APIs (excluding the payment page), please ensure that your outbound systems allow traffic to the IP range:
+     * 145.226.0.0 - 145.226.255.255
+     *
+     * For the receipt of all payment completion notifications sent by our servers (return interface), please ensure that your inbound systems accept traffic from the following IP ranges:
+     * 145.226.30.0 - 145.226.30.255
+     * 145.226.158.0 - 145.226.158.255
+     * 145.226.224.128 - 145.226.224.255
+	 *
+	 * @return string[]
+	 */
+	public function getMoneticoList(): array
+	{
+		return [
+			'145.226.0.0/16',
+		];
+	}
+
+	/**
 	 * Get all IPv4 from Paybox
 	 *
 	 * @link https://www.paybox.com/espace-integrateur-documentation/la-solution-paybox-system/urls-dappels-et-adresses-ip/
