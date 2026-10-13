@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace Coercive\Security\BotKicker\Syslog;
 
 use Exception;
@@ -13,7 +15,7 @@ use Exception;
  * @copyright   (c) 2025 Anthony Moral
  * @license 	MIT
  */
-class SyslogUfwLineEntity
+final class SyslogUfwLineEntity
 {
 	const reg_ip = "`\sSRC=([a-f\d.:]+)\s`i";
 	const reg_protocol = "`\sPROTO=(\w+)\s`i";

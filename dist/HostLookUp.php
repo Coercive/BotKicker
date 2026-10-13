@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace Coercive\Security\BotKicker;
 
 /**
@@ -11,9 +13,9 @@ namespace Coercive\Security\BotKicker;
  * @copyright   (c) 2023 Anthony Moral
  * @license 	MIT
  */
-class HostLookUp extends AbstractLookUp
+final class HostLookUp extends AbstractLookUp
 {
-	const CMD = 'host -W %d -R %d "%s"';
+	const CMD = 'host -W %d -R %d %s';
 
 	const REGEX_DOMAIN = '`^[a-z0-9\._-]+\s+domain name pointer\s+(?P<domain>[a-z0-9\._-]+\.)$`';
 

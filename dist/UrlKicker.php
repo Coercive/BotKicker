@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace Coercive\Security\BotKicker;
 
 /**
@@ -11,7 +13,7 @@ namespace Coercive\Security\BotKicker;
  * @copyright   (c) 2023 Anthony Moral
  * @license 	MIT
  */
-class UrlKicker extends AbstractKicker
+final class UrlKicker extends AbstractKicker
 {
 	const COERCIVE_BLACK_FILE = __DIR__ . '/../list/url/coercive_black';
 	const COERCIVE_GRAY_FILE = __DIR__ . '/../list/url/coercive_gray';
@@ -52,17 +54,15 @@ class UrlKicker extends AbstractKicker
 	 */
 	private function clearUrl(string $url): string
 	{
-		if(false !== strpos($url, '%')) {
-			$url = urldecode($url);
-		}
-
-		$url = '/' . trim($url, '/');
-
 		if(false !== strpos($url, '?')) {
 			$url = (string) strstr($url, '?', true);
 		}
 
-		return $url;
+		if(false !== strpos($url, '%')) {
+			$url = urldecode($url);
+		}
+
+		return '/' . trim($url, '/');
 	}
 
 	/**
@@ -123,10 +123,11 @@ class UrlKicker extends AbstractKicker
 	 */
 	public function detectUrl(): self
 	{
-		$url = (string) filter_input(INPUT_SERVER, 'REQUEST_URI', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-		if(!$url) {
-			$url = (string) filter_input(INPUT_SERVER, 'SCRIPT_URL', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+		$url = (string) ($_SERVER['REQUEST_URI'] ?? '');
+		if('' === $url) {
+			$url = (string) ($_SERVER['SCRIPT_URL'] ?? '');
 		}
+		$url = (string) filter_var($url, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 		$this->rawUrl = $url;
 		$this->url = $this->clearUrl($url);
 		return $this;
@@ -134,7 +135,7 @@ class UrlKicker extends AbstractKicker
 
 	/**
 	 * @param string $url
-	 * @param bool $clean
+	 * @param bool $clean [optional]
 	 * @return $this
 	 */
 	public function setUrl(string $url, bool $clean = true): self
@@ -185,6 +186,6 @@ class UrlKicker extends AbstractKicker
 	 */
 	public function find(string $str): bool
 	{
-		return false !== mb_strpos($this->url, $str);
+		return false !== strpos($this->url, $str);
 	}
 }

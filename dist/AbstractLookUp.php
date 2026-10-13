@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace Coercive\Security\BotKicker;
 
 /**
@@ -40,10 +42,32 @@ abstract class AbstractLookUp
 	 */
 	protected function exec(string $host): array
 	{
-		$cmd = sprintf(static::CMD, $this->timeout, $this->retry, escapeshellcmd($host));
+		$cmd = sprintf(static::CMD, $this->timeout, $this->retry, escapeshellarg($host));
+		$output = [];
 		exec($cmd, $output);
 
-		return $output ?: [];
+		return $output;
+	}
+
+	/**
+	 * Check if the host ends with the given domain (same domain or subdomain)
+	 *
+	 * @param string $host
+	 * @param string $domain
+	 * @return bool
+	 */
+	protected function isDomainOf(string $host, string $domain): bool
+	{
+		$host = strtolower(rtrim(trim($host), '.'));
+		$domain = strtolower(trim(trim($domain), '.'));
+		if('' === $host || '' === $domain) {
+			return false;
+		}
+		if($host === $domain) {
+			return true;
+		}
+		$suffix = '.' . $domain;
+		return substr($host, -strlen($suffix)) === $suffix;
 	}
 
 	/**
@@ -146,11 +170,10 @@ abstract class AbstractLookUp
 		# Search by domain
 		$match = false;
 		$foundedDoms = [];
-		$domain = trim($domain, ' .') . '.';
 		foreach ($this->getDomains($ip) as $foundedDom) {
 
 			# Match the end of the domain only
-			if(strlen($foundedDom) - strlen($domain) === strrpos($foundedDom, $domain)) {
+			if($this->isDomainOf($foundedDom, $domain)) {
 				$foundedDoms[] = $foundedDom;
 				$match = true;
 				break;
@@ -190,16 +213,14 @@ abstract class AbstractLookUp
 			return false;
 		}
 
-		$domain = trim(rtrim($domain, '.'));
-
 		# Reverse DNS (IP -> Hostname) : lookup failed or returned IP itself
-		$hostname = gethostbyaddr($ip);
-		if ($hostname === $ip) {
+		$hostname = @gethostbyaddr($ip);
+		if (!$hostname || $hostname === $ip) {
 			return false;
 		}
 
-		# Check if hostname end with the givent domain
-		if (!preg_match('`' . preg_quote($domain, '`') . '$`i', $hostname)) {
+		# Check if hostname end with the given domain
+		if (!$this->isDomainOf($hostname, $domain)) {
 			return false;
 		}
 

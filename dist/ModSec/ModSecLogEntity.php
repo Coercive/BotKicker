@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace Coercive\Security\BotKicker\ModSec;
 
 /**
@@ -11,7 +13,7 @@ namespace Coercive\Security\BotKicker\ModSec;
  * @copyright   (c) 2025 Anthony Moral
  * @license 	MIT
  */
-class ModSecLogEntity
+final class ModSecLogEntity
 {
 	private string $id;
 

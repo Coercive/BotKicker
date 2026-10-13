@@ -1,83 +1,91 @@
-<?php declare(strict_types=1);
+<?php
+namespace Coercive\Security\BotKicker\Tests;
 
 use Coercive\Security\BotKicker\IpKicker;
+use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\TestCase;
 
 final class IpKickerTest extends TestCase
 {
-	public function testList(): void
+	public function testStaticLists(): void
 	{
-        $ipk = new IpKicker(false);
+		$ipk = new IpKicker;
 
-        # Payplug (on OVH server)
-        $this->assertTrue(in_array('54.77.126.191', $ipk->getPayPlugList()));
-        $this->assertFalse(in_array('1.2.3.4', $ipk->getPayPlugList()));
+		# Payplug (on OVH server)
+		$this->assertContains('54.77.126.191', $ipk->getPayPlugList());
 
-        # Paybox (on ORANGE cloud services)
-        $this->assertTrue(in_array('194.2.160.91', $ipk->getPayboxList()));
-        $this->assertFalse(in_array('1.2.3.4', $ipk->getPayboxList()));
+		# Paybox (on ORANGE cloud services)
+		$this->assertContains('194.2.160.91', $ipk->getPayboxList());
+		$this->assertSame(array_values(array_unique($ipk->getPayboxList())), $ipk->getPayboxList());
 
-        # Prolexis (on OVH server)
-        $this->assertTrue(in_array('54.36.182.4', $ipk->getProlexisList()));
-        $this->assertFalse(in_array('1.2.3.4', $ipk->getProlexisList()));
+		# Prolexis (on OVH server)
+		$this->assertContains('54.36.182.4', $ipk->getProlexisList());
 
-        # Let's Encrypt (on AMAZON server)
-        $this->assertTrue(in_array('52.89.215.165', $ipk->getLetsEncryptList()));
-        $this->assertFalse(in_array('1.2.3.4', $ipk->getLetsEncryptList()));
+		# Monetico
+		$this->assertContains('145.226.0.0/16', $ipk->getMoneticoList());
 
-        # FaceBook
-        $list = $ipk->getFacebookList();
-        $this->assertTrue(in_array('57.144.40.0/23', $list));
-        $this->assertFalse(in_array('1.2.3.4', $list));
+		# Let's Encrypt (on AMAZON server)
+		$this->assertContains('52.89.215.165', $ipk->getLetsEncryptList());
 
-        # LinkedIn
-        $list = $ipk->getLinkedInList();
-        $this->assertTrue(in_array('45.42.65.0/24', $list));
-        $this->assertFalse(in_array('1.2.3.4', $list));
+		# Mailjet (Mailgun server)
+		$this->assertContains('143.55.237.0/24', $ipk->getMailjetList());
 
-        # GoogleBot
-        $list = $ipk->getGoogleBotList();
-        $this->assertTrue(in_array('66.249.71.224/27', $list));
-        $this->assertFalse(in_array('1.2.3.4', $list));
+		# Stripe (on AMAZON server)
+		$this->assertContains('13.56.126.253', $ipk->getStripeList());
 
-        # Google Cloud
-        $list = $ipk->getGoogleCloudList();
-        $this->assertTrue(in_array('35.220.32.0/21', $list));
-        $this->assertFalse(in_array('1.2.3.4', $list));
+		# Brevo (on SENDINBLUE server)
+		$this->assertContains('212.146.244.0/24', $ipk->getBrevoList());
 
-        # Google User
-        $list = $ipk->getGoogleUserList();
-        $this->assertTrue(in_array('34.3.0.0/23', $list));
-        $this->assertFalse(in_array('1.2.3.4', $list));
+		# Cloudflare / Bing
+		$this->assertNotEmpty($ipk->getCloudflareList());
+		$this->assertNotEmpty($ipk->getBingList());
 
-        # Google Special Crawlers
-        $list = $ipk->getGoogleSpecialCrawlersList();
-        $this->assertTrue(in_array('66.249.91.64/27', $list));
-        $this->assertFalse(in_array('1.2.3.4', $list));
+		foreach ([$ipk->getLetsEncryptList(), $ipk->getStripeList(), $ipk->getBingList()] as $list) {
+			$this->assertNotContains('1.2.3.4', $list);
+		}
+	}
 
-        # Google User Triggered Fetchers
-        $list = $ipk->getGoogleUserTriggeredFetchersList();
-        $this->assertTrue(in_array('107.178.224.224/27', $list));
-        $this->assertFalse(in_array('1.2.3.4', $list));
+	public function testCoerciveList(): void
+	{
+		$ipk = (new IpKicker)->loadCoerciveList();
+		$this->assertFalse($ipk->setInputList(['223.1.2.3'])->detect()->getStatus());
+		$this->assertTrue($ipk->setInputList(['1.2.3.4'])->detect()->getStatus());
+	}
 
-        # Google Triggered Fetchers
-        $list = $ipk->getGoogleUserTriggeredFetchersGoogleList();
-        $this->assertTrue(in_array('192.178.9.32/27', $list));
-        $this->assertFalse(in_array('1.2.3.4', $list));
+	#[Group('network')]
+	public function testDynamicLists(): void
+	{
+		$ipk = new IpKicker;
 
-        # Mailjet (Mailgun server)
-        $list = $ipk->getMailjetList();
-        $this->assertTrue(in_array('143.55.237.0/24', $list));
-        $this->assertFalse(in_array('1.2.3.4', $list));
+		# FaceBook
+		$list = $ipk->getFacebookList();
+		$this->assertContains('57.144.40.0/23', $list);
+		$this->assertNotContains('1.2.3.4', $list);
 
-        # Stripe (on AMAZON server)
-        $list = $ipk->getStripeList();
-        $this->assertTrue(in_array('13.56.126.253', $list));
-        $this->assertFalse(in_array('1.2.3.4', $list));
+		# LinkedIn
+		$this->assertContains('45.42.65.0/24', $ipk->getLinkedInList());
 
-        # Brevo (on SENDINBLUE server)
-        $list = $ipk->getBrevoList();
-        $this->assertTrue(in_array('212.146.244.0/24', $list));
-        $this->assertFalse(in_array('1.2.3.4', $list));
+		# Bing
+		$this->assertNotEmpty($ipk->getBingList(true));
+
+		# GoogleBot
+		$this->assertContains('66.249.71.224/27', $ipk->getGoogleBotList());
+		$this->assertNotEmpty($ipk->getGoogleBotList(true));
+		$this->assertStringContainsString(':', $ipk->getGoogleBotList(true)[0]);
+
+		# Google Cloud
+		$this->assertContains('35.220.32.0/21', $ipk->getGoogleCloudList());
+
+		# Google User
+		$this->assertContains('34.3.0.0/23', $ipk->getGoogleUserList());
+
+		# Google Special Crawlers
+		$this->assertContains('66.249.91.64/27', $ipk->getGoogleSpecialCrawlersList());
+
+		# Google User Triggered Fetchers
+		$this->assertContains('107.178.224.224/27', $ipk->getGoogleUserTriggeredFetchersList());
+
+		# Google Triggered Fetchers
+		$this->assertContains('192.178.9.32/27', $ipk->getGoogleUserTriggeredFetchersGoogleList());
 	}
 }

@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace Coercive\Security\BotKicker\Syslog;
 
 /**
@@ -11,7 +13,7 @@ namespace Coercive\Security\BotKicker\Syslog;
  * @copyright   (c) 2024 Anthony Moral
  * @license 	MIT
  */
-class SyslogUfwEntity
+final class SyslogUfwEntity
 {
 	/** @var SyslogUfwLineEntity[] */
 	private array $lines = [];
@@ -124,7 +126,7 @@ class SyslogUfwEntity
 	 * @param SyslogUfwLineEntity $line
 	 * @return $this
 	 */
-	public function addLine(SyslogUfwLineEntity $line):self
+	public function addLine(SyslogUfwLineEntity $line): self
 	{
 		$this->lines[] = $line;
 
@@ -240,12 +242,9 @@ class SyslogUfwEntity
 			return false;
 		}
 
-		# If only one ICMP / ICMPv6 protocal, it's maybe just a check
-		foreach ($this->protocols as $protocol) {
-			if(count($this->protocols) === 1 && in_array($protocol, ['ICMP', 'ICMPv6'], true)) {
-				return false;
-			}
-			break;
+		# If only one ICMP / ICMPv6 protocol, it's maybe just a check
+		if(count($this->protocols) === 1 && array_intersect($this->protocols, ['ICMP', 'ICMPv6'])) {
+			return false;
 		}
 
 		# Get out everything that is not TCP / ICMP
@@ -257,7 +256,7 @@ class SyslogUfwEntity
 
 		# Get out everything that is not 80 / 443
 		foreach ($this->ports as $port) {
-			if(!in_array($port, ['80', '443'], true)) {
+			if(!in_array($port, [80, 443], true)) {
 				return true;
 			}
 		}

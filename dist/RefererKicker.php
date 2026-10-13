@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace Coercive\Security\BotKicker;
 
 /**
@@ -11,7 +13,7 @@ namespace Coercive\Security\BotKicker;
  * @copyright   (c) 2018 Anthony Moral
  * @license 	MIT
  */
-class RefererKicker extends AbstractKicker
+final class RefererKicker extends AbstractKicker
 {
 	const CHONGQED_FILE = __DIR__ . '/../list/referer/chongqed';
 	const COERCIVE_FILE = __DIR__ . '/../list/referer/coercive';
@@ -24,7 +26,7 @@ class RefererKicker extends AbstractKicker
 	 */
 	public function __construct()
 	{
-		$referer = (string) filter_input(INPUT_SERVER, 'HTTP_REFERER');
+		$referer = (string) ($_SERVER['HTTP_REFERER'] ?? '');
 		if($referer) {
 			$this->setInputList([$referer]);
 		}
@@ -33,7 +35,7 @@ class RefererKicker extends AbstractKicker
 	/**
 	 * @return $this
 	 */
-	public function loadCoerciveList(): RefererKicker
+	public function loadCoerciveList(): self
 	{
 		$this->setBlackListFromFiles([self::COERCIVE_FILE]);
 		return $this;
@@ -46,7 +48,7 @@ class RefererKicker extends AbstractKicker
 	 *
 	 * @return $this
 	 */
-	public function loadPerishableList(): RefererKicker
+	public function loadPerishableList(): self
 	{
 		$this->setBlackListFromFiles([self::PERISHABLE_FILE]);
 		return $this;
@@ -58,7 +60,7 @@ class RefererKicker extends AbstractKicker
 	 *
 	 * @return $this
 	 */
-	public function loadChongqedList(): RefererKicker
+	public function loadChongqedList(): self
 	{
 		$this->setBlackListFromFiles([self::CHONGQED_FILE]);
 		return $this;

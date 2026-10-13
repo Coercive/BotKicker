@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace Coercive\Security\BotKicker;
 
 /**
@@ -11,7 +13,7 @@ namespace Coercive\Security\BotKicker;
  * @copyright   2018 Anthony Moral
  * @license 	MIT
  */
-class RequestMethodKicker extends AbstractKicker
+final class RequestMethodKicker extends AbstractKicker
 {
 	const COERCIVE_FILE = __DIR__ . '/../list/method/coercive';
 
@@ -22,7 +24,7 @@ class RequestMethodKicker extends AbstractKicker
 	 */
 	public function __construct()
 	{
-		$method = (string) filter_input(INPUT_SERVER, 'REQUEST_METHOD', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+		$method = (string) filter_var((string) ($_SERVER['REQUEST_METHOD'] ?? ''), FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 		if($method) {
 			$this->setInputList([$method]);
 		}
@@ -31,7 +33,7 @@ class RequestMethodKicker extends AbstractKicker
 	/**
 	 * @return $this
 	 */
-	public function loadCoerciveList(): RequestMethodKicker
+	public function loadCoerciveList(): self
 	{
 		$this->setBlackListFromFiles([self::COERCIVE_FILE]);
 		return $this;

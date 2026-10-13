@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace Coercive\Security\BotKicker;
 
 /**
@@ -11,9 +13,9 @@ namespace Coercive\Security\BotKicker;
  * @copyright   (c) 2023 Anthony Moral
  * @license 	MIT
  */
-class NsLookUp extends AbstractLookUp
+final class NsLookUp extends AbstractLookUp
 {
-	const CMD = 'nslookup -timeout=%d -retry=%d "%s"';
+	const CMD = 'nslookup -timeout=%d -retry=%d %s';
 
 	const REGEX_DOMAIN = '`^[a-z0-9\._-]+\sname\s*=\s*(?P<domain>[a-z0-9\._-]+\.)$`';
 

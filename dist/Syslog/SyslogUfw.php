@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace Coercive\Security\BotKicker\Syslog;
 
 use Exception;
@@ -13,7 +15,7 @@ use Exception;
  * @copyright   (c) 2024 Anthony Moral
  * @license 	MIT
  */
-class SyslogUfw
+final class SyslogUfw
 {
 	private string $path;
 
@@ -39,22 +41,23 @@ class SyslogUfw
 	 * @return void
 	 * @throws Exception
 	 */
-	private function load()
+	private function load(): void
 	{
 		# Reset containers
 		$this->matches = [];
 		$this->errors = [];
 
 		# Open file
-		$fh = fopen($this->path, 'r');
+		$fh = @fopen($this->path, 'r');
 		if(false === $fh) {
 			throw new Exception("Can't read file: {$this->path}");
 		}
 
-		while (!feof($fh)) {
-			$row = fgets($fh);
-			if(false === $row) {
-				throw new Exception("Can't read line");
+		while (false !== ($row = fgets($fh))) {
+
+			# Skip empty lines
+			if('' === trim($row)) {
+				continue;
 			}
 
 			# Retrieve needed parts
@@ -69,8 +72,12 @@ class SyslogUfw
 			$entity->addLine($line);
 		}
 
-		# Close file
+		# Read error before the end of file
+		$eof = feof($fh);
 		fclose($fh);
+		if(!$eof) {
+			throw new Exception("Can't read line");
+		}
 	}
 
 	/**

@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace Coercive\Security\BotKicker;
 
 use RuntimeException;
@@ -13,7 +15,7 @@ use RuntimeException;
  * @copyright   (c) 2018 Anthony Moral
  * @license 	MIT
  */
-class IpKicker extends AbstractKicker
+final class IpKicker extends AbstractKicker
 {
 	const COERCIVE_FILE = __DIR__ . '/../list/ip/coercive';
 	const BING_FILE = __DIR__ . '/../list/ip/bing';
@@ -29,51 +31,60 @@ class IpKicker extends AbstractKicker
 	/**
 	 * @return $this
 	 */
-	public function loadCoerciveList(): IpKicker
+	public function loadCoerciveList(): self
 	{
 		$this->setBlackListFromFiles([self::COERCIVE_FILE]);
 		return $this;
 	}
 
-    /**
-     * @param bool $dynamic [optional]
-     * @return array
-     */
+	/**
+	 * Download the given url (5 seconds timeout)
+	 *
+	 * @param string $url
+	 * @return string Empty on failure
+	 */
+	private function download(string $url): string
+	{
+		$ctx = stream_context_create([
+			'http' => [
+				'method' => 'GET',
+				'timeout' => 5,
+			],
+		]);
+		return trim((string) @file_get_contents($url, false, $ctx));
+	}
+
+	/**
+	 * @param bool $dynamic [optional] Retrieve the list from bing.com instead of the local file
+	 * @return array
+	 * @throws RuntimeException Dynamic mode only
+	 */
 	public function getBingList(bool $dynamic = false): array
 	{
-        if(!$dynamic) {
-            return $this->getDataFromFiles([self::BING_FILE]);
-        }
+		if(!$dynamic) {
+			return self::getDataFromFiles([self::BING_FILE]);
+		}
 
-        $url = 'https://www.bing.com/toolbox/bingbot.json';
+		$json = $this->download('https://www.bing.com/toolbox/bingbot.json');
+		if ('' === $json) {
+			throw new RuntimeException('Cannot retrieve BingBot IP list');
+		}
 
-        $ctx = stream_context_create([
-            'http' => [
-                'method'  => 'GET',
-                'timeout' => 5,
-            ],
-        ]);
+		$data = json_decode($json, true);
+		if (!is_array($data) || !isset($data['prefixes']) || !is_array($data['prefixes'])) {
+			throw new RuntimeException('Unallowed JSON format for BingBot IP list');
+		}
 
-        $json = trim(@file_get_contents($url, false, $ctx));
-        if (!$json) {
-            throw new RuntimeException('Cannot retrieve BingBot IP list');
-        }
-
-        $data = json_decode($json, true);
-        if (!is_array($data) || !isset($data['prefixes']) || !is_array($data['prefixes'])) {
-            throw new RuntimeException('Unallowed JSON format for BingBot IP list');
-        }
-
-        $ips = [];
-        foreach ($data['prefixes'] as $prefix) {
-            if ($cidr = $prefix['ipv4Prefix'] ?? null) {
-                $ips[] = $cidr;
-            }
-            if ($cidr = $prefix['ipv6Prefix'] ?? null) {
-                $ips[] = $cidr;
-            }
-        }
-        return $ips;
+		$ips = [];
+		foreach ($data['prefixes'] as $prefix) {
+			if ($cidr = $prefix['ipv4Prefix'] ?? null) {
+				$ips[] = $cidr;
+			}
+			if ($cidr = $prefix['ipv6Prefix'] ?? null) {
+				$ips[] = $cidr;
+			}
+		}
+		return $ips;
 	}
 
 	/**
@@ -81,7 +92,7 @@ class IpKicker extends AbstractKicker
 	 */
 	public function getCloudflareList(): array
 	{
-		return $this->getDataFromFiles([self::CLOUDFLARE_FILE]);
+		return self::getDataFromFiles([self::CLOUDFLARE_FILE]);
 	}
 
 	/**
@@ -89,7 +100,7 @@ class IpKicker extends AbstractKicker
 	 */
 	public function getMailjetList(): array
 	{
-		return $this->getDataFromFiles([self::MAILJET_FILE]);
+		return self::getDataFromFiles([self::MAILJET_FILE]);
 	}
 
 	/**
@@ -97,7 +108,7 @@ class IpKicker extends AbstractKicker
 	 */
 	public function getStripeList(): array
 	{
-		return $this->getDataFromFiles([self::STRIPE_FILE]);
+		return self::getDataFromFiles([self::STRIPE_FILE]);
 	}
 
 	/**
@@ -105,7 +116,7 @@ class IpKicker extends AbstractKicker
 	 */
 	public function getBrevoList(): array
 	{
-		return $this->getDataFromFiles([self::BREVO_FILE]);
+		return self::getDataFromFiles([self::BREVO_FILE]);
 	}
 
 	/**
@@ -113,23 +124,23 @@ class IpKicker extends AbstractKicker
 	 */
 	public function getLetsEncryptList(): array
 	{
-		return $this->getDataFromFiles([self::LETSENCRYPT_FILE]);
+		return self::getDataFromFiles([self::LETSENCRYPT_FILE]);
 	}
 
 	/**
 	 * @param string $url
-	 * @param bool $ipv6
+	 * @param bool $ipv6 IPv6 only (true) or IPv4 only (false)
 	 * @return array
 	 */
 	private function extractGoogleList(string $url, bool $ipv6): array
 	{
-		$json = file_get_contents($url);
-		if (!$json) {
+		$json = $this->download($url);
+		if ('' === $json) {
 			return [];
 		}
 
 		$data = json_decode($json, true);
-		if ($data === null || !isset($data['prefixes'])) {
+		if (!is_array($data) || !isset($data['prefixes']) || !is_array($data['prefixes'])) {
 			return [];
 		}
 
@@ -138,7 +149,7 @@ class IpKicker extends AbstractKicker
 			if (!$ipv6 && isset($prefix['ipv4Prefix'])) {
 				$ipList[] = $prefix['ipv4Prefix'];
 			}
-			elseif ($ipv6 & isset($prefix['ipv6Prefix'])) {
+			elseif ($ipv6 && isset($prefix['ipv6Prefix'])) {
 				$ipList[] = $prefix['ipv6Prefix'];
 			}
 		}
@@ -285,14 +296,14 @@ class IpKicker extends AbstractKicker
 
 	/**
 	 * Get all IPv4 from Monetico
-     *
-     * For all calls from your servers to our web APIs (excluding the payment page), please ensure that your outbound systems allow traffic to the IP range:
-     * 145.226.0.0 - 145.226.255.255
-     *
-     * For the receipt of all payment completion notifications sent by our servers (return interface), please ensure that your inbound systems accept traffic from the following IP ranges:
-     * 145.226.30.0 - 145.226.30.255
-     * 145.226.158.0 - 145.226.158.255
-     * 145.226.224.128 - 145.226.224.255
+	 *
+	 * For all calls from your servers to our web APIs (excluding the payment page), please ensure that your outbound systems allow traffic to the IP range:
+	 * 145.226.0.0 - 145.226.255.255
+	 *
+	 * For the receipt of all payment completion notifications sent by our servers (return interface), please ensure that your inbound systems accept traffic from the following IP ranges:
+	 * 145.226.30.0 - 145.226.30.255
+	 * 145.226.158.0 - 145.226.158.255
+	 * 145.226.224.128 - 145.226.224.255
 	 *
 	 * @return string[]
 	 */
@@ -321,9 +332,7 @@ class IpKicker extends AbstractKicker
 			'195.25.67.0',
 			'195.25.67.2',
 			'195.25.67.11',
-			'195.25.7.146',
 			'194.2.122.190',
-			'195.25.67.22',
 		];
 	}
 
@@ -331,18 +340,21 @@ class IpKicker extends AbstractKicker
 	 * Retrieve dynamicaly all IPv4 & IPv6 from "Autonomous System Numbers" (ASN)
 	 *
 	 * @param string $asn
-	 * @param bool|null $ipv6 [optional]
+	 * @param bool|null $ipv6 [optional] IPv6 only (true), IPv4 only (false) or both (null)
 	 * @return string[]
 	 */
 	public function getFromASN(string $asn, ? bool $ipv6 = null): array
 	{
+		$cmd = 'whois -h whois.radb.net -- ' . escapeshellarg('-i origin ' . $asn) . ' | grep ^route' . ($ipv6 === true ? '6' : '') . ($ipv6 !== null ? ':' : '');
+		$output = [];
+		exec($cmd, $output);
+
 		$list = [];
-		$cmd = "whois -h whois.radb.net -- '-i origin $asn' | grep ^route" . ($ipv6 === true ? '6' : '') . ($ipv6 !== null ? ':' : '');
-		if(exec($cmd, $output)) {
-			foreach ($output as $line) {
-				$list[] = preg_replace('`route\d?:\s+`', '', $line);
+		foreach ($output as $line) {
+			if($range = trim((string) preg_replace('`^route6?:\s+`', '', $line))) {
+				$list[] = $range;
 			}
 		}
-		return $list;
+		return array_values(array_unique($list));
 	}
 }

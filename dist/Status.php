@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace Coercive\Security\BotKicker;
 
 /**
@@ -11,7 +13,7 @@ namespace Coercive\Security\BotKicker;
  * @copyright   (c) 2018 Anthony Moral
  * @license 	MIT
  */
-class Status
+final class Status
 {
 	/** @var bool BotKicker state */
 	private bool $state;
@@ -32,6 +34,7 @@ class Status
 	 * @param array $inputs [optional]
 	 * @param string $input [optional]
 	 * @param array $matches [optional]
+	 * @return void
 	 */
 	public function __construct(bool $state, array $inputs = [], string $input = '', array $matches = [])
 	{

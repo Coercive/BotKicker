@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace Coercive\Security\BotKicker;
 
 /**
@@ -11,7 +13,7 @@ namespace Coercive\Security\BotKicker;
  * @copyright   (c) 2025 Anthony Moral
  * @license 	MIT
  */
-class InputKicker extends AbstractKicker
+final class InputKicker extends AbstractKicker
 {
 	const COERCIVE_BLACK_FILE = __DIR__ . '/../list/input/coercive_black';
 	const COERCIVE_GRAY_FILE = __DIR__ . '/../list/input/coercive_gray';
@@ -20,6 +22,8 @@ class InputKicker extends AbstractKicker
 	/**
 	 * InputKicker constructor.
 	 *
+	 * @param bool $GET [optional] Load $_GET values
+	 * @param bool $POST [optional] Load $_POST values
 	 * @return void
 	 */
 	public function __construct(bool $GET = true, bool $POST = true)
@@ -40,7 +44,7 @@ class InputKicker extends AbstractKicker
 	/**
 	 * @return $this
 	 */
-	public function loadCoerciveLists(): InputKicker
+	public function loadCoerciveLists(): self
 	{
 		$this->loadCoerciveWhitelist();
 		$this->loadCoerciveBlacklist();
@@ -50,7 +54,7 @@ class InputKicker extends AbstractKicker
 	/**
 	 * @return $this
 	 */
-	public function loadCoerciveWhitelist(): InputKicker
+	public function loadCoerciveWhitelist(): self
 	{
 		$this->setWhiteListFromFiles([self::COERCIVE_WHITE_FILE]);
 		return $this;
@@ -59,7 +63,7 @@ class InputKicker extends AbstractKicker
 	/**
 	 * @return $this
 	 */
-	public function loadCoerciveGraylist(): InputKicker
+	public function loadCoerciveGraylist(): self
 	{
 		$this->setBlackListFromFiles([self::COERCIVE_GRAY_FILE]);
 		return $this;
@@ -68,7 +72,7 @@ class InputKicker extends AbstractKicker
 	/**
 	 * @return $this
 	 */
-	public function loadCoerciveBlacklist(): InputKicker
+	public function loadCoerciveBlacklist(): self
 	{
 		$this->setBlackListFromFiles([self::COERCIVE_BLACK_FILE]);
 		return $this;

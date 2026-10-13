@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace Coercive\Security\BotKicker;
 
 /**
@@ -11,7 +13,7 @@ namespace Coercive\Security\BotKicker;
  * @copyright   (c) 2018 Anthony Moral
  * @license 	MIT
  */
-class UserAgentKicker extends AbstractKicker
+final class UserAgentKicker extends AbstractKicker
 {
 	const AMBIGUOUS_FILE = __DIR__ . '/../list/useragent/ambiguous';
 	const COERCIVE_BLACK_FILE = __DIR__ . '/../list/useragent/coercive_black';
@@ -27,7 +29,7 @@ class UserAgentKicker extends AbstractKicker
 	 */
 	public function __construct()
 	{
-		$agent = (string) filter_input(INPUT_SERVER, 'HTTP_USER_AGENT');
+		$agent = (string) ($_SERVER['HTTP_USER_AGENT'] ?? '');
 		if($agent) {
 			$this->setInputList([$agent]);
 		}
@@ -36,7 +38,7 @@ class UserAgentKicker extends AbstractKicker
 	/**
 	 * @return $this
 	 */
-	public function loadCoerciveLists(): UserAgentKicker
+	public function loadCoerciveLists(): self
 	{
 		$this->loadCoerciveWhitelist();
 		$this->loadCoerciveBlacklist();
@@ -46,7 +48,7 @@ class UserAgentKicker extends AbstractKicker
 	/**
 	 * @return $this
 	 */
-	public function loadCoerciveWhitelist(): UserAgentKicker
+	public function loadCoerciveWhitelist(): self
 	{
 		$this->setWhiteListFromFiles([self::COERCIVE_WHITE_FILE]);
 		return $this;
@@ -55,7 +57,7 @@ class UserAgentKicker extends AbstractKicker
 	/**
 	 * @return $this
 	 */
-	public function loadCoerciveGraylist(): UserAgentKicker
+	public function loadCoerciveGraylist(): self
 	{
 		$this->setBlackListFromFiles([self::COERCIVE_GRAY_FILE]);
 		return $this;
@@ -64,7 +66,7 @@ class UserAgentKicker extends AbstractKicker
 	/**
 	 * @return $this
 	 */
-	public function loadCoerciveBlacklist(): UserAgentKicker
+	public function loadCoerciveBlacklist(): self
 	{
 		$this->setBlackListFromFiles([self::COERCIVE_BLACK_FILE]);
 		return $this;
@@ -77,7 +79,7 @@ class UserAgentKicker extends AbstractKicker
 	 *
 	 * @return $this
 	 */
-	public function loadPerishableBlacklist(): UserAgentKicker
+	public function loadPerishableBlacklist(): self
 	{
 		$this->setBlackListFromFiles([self::PERISHABLE_FILE]);
 		return $this;
@@ -90,7 +92,7 @@ class UserAgentKicker extends AbstractKicker
 	 *
 	 * @return $this
 	 */
-	public function loadMitchellKrogzaBlacklist(): UserAgentKicker
+	public function loadMitchellKrogzaBlacklist(): self
 	{
 		$this->setBlackListFromFiles([self::MITCHELLKROGZA_FILE]);
 		return $this;

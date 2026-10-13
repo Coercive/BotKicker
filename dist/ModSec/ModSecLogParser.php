@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace Coercive\Security\BotKicker\ModSec;
 
 use InvalidArgumentException;
@@ -14,7 +16,7 @@ use RuntimeException;
  * @copyright   (c) 2025 Anthony Moral
  * @license 	MIT
  */
-class ModSecLogParser
+final class ModSecLogParser
 {
 	private string $logPath;
 
@@ -41,7 +43,7 @@ class ModSecLogParser
 	 */
 	private function parseLog(): void
 	{
-		$handle = fopen($this->logPath, 'r');
+		$handle = @fopen($this->logPath, 'r');
 		if (!$handle) {
 			throw new RuntimeException("Can't open file : $this->logPath");
 		}
@@ -60,8 +62,17 @@ class ModSecLogParser
 				$id = $match[1];
 				$section = $match[2];
 
-				if ($section === 'A' && !isset($entries['id'])) {
+				if ($section === 'A' && !isset($entries[$id])) {
 					$entries[$id] = new ModSecLogEntity($id);
+				}
+
+				# End of transaction
+				if ($section === 'Z' && isset($entries[$id])) {
+					$entries[$id]->setCompletedStatus();
+					$this->entries[] = $entries[$id];
+					unset($entries[$id]);
+					$id = null;
+					$section = null;
 				}
 
 				continue;
@@ -72,25 +83,26 @@ class ModSecLogParser
 				$entries[$id]->addSection($section, $line);
 
 				# Get calling IP
-				if ($section === 'A' && !$entries[$id]->getIp()) {
-					if (preg_match('`^\[[^\]]+\]\s+\S+\s+(\d{1,3}(?:\.\d{1,3}){3})`', $line, $ipMatch)) {
-						$entries[$id]->setIp($ipMatch[1]);
-					}
+				if ($section === 'A' && !$entries[$id]->getIp()
+					&& preg_match('`^\[[^\]]+\]\s+\S+\s+([0-9a-fA-F.:]+)\s`', $line, $match)
+					&& filter_var($match[1], FILTER_VALIDATE_IP)
+				) {
+					$entries[$id]->setIp($match[1]);
 				}
 
 				# Access method / URI / and protocol
 				if ($section === 'B' && !$entries[$id]->getMethod()
-					&& preg_match('`^(GET|POST|PUT|DELETE|HEAD|OPTIONS|PATCH|CONNECT|TRACE)\s+(\S+)\s+(HTTP/\d\.\d)`i', $line, $match)
+					&& preg_match('`^(GET|POST|PUT|DELETE|HEAD|OPTIONS|PATCH|CONNECT|TRACE)\s+(\S+)\s+(HTTP/\d(?:\.\d)?)`i', $line, $match)
 				) {
 					$entries[$id]
-						->setMethod($match[1])
+						->setMethod(strtoupper($match[1]))
 						->setUri($match[2])
 						->setProtocol($match[3]);
 				}
 
 				# Host called
 				if ($section === 'B' && !$entries[$id]->getHost()
-					&& preg_match('`Host:\s*(.+)`', $line, $match)) {
+					&& preg_match('`^Host:\s*(.+)`i', $line, $match)) {
 					$entries[$id]->setHost(trim($match[1]));
 				}
 
@@ -99,15 +111,6 @@ class ModSecLogParser
 					&& preg_match('`^User-Agent:\s*(.+)`i', $line, $match)) {
 					$entries[$id]->setUserAgent(trim($match[1]));
 				}
-			}
-
-			# End of transaction
-			if ($section === 'Z' && isset($entries[$id])) {
-				$entries[$id]->setCompletedStatus();
-				$this->entries[] = $entries[$id];
-				unset($entries[$id]);
-				$id = null;
-				$section = null;
 			}
 		}
 
@@ -144,13 +147,17 @@ class ModSecLogParser
 	{
 		return $this->search(function (ModSecLogEntity $entry) {
 			$host = $entry->getHost();
-			if(strpos($host, ':')) {
-				$host = explode(':', $host)[0] ?? '';
+
+			# IPv6 : [::1]:443
+			if(preg_match('`^\[([^\]]+)\]`', $host, $match)) {
+				$host = $match[1];
 			}
-			if ($host && filter_var($host, FILTER_VALIDATE_IP)) {
-				return true;
+			# IPv4 : 1.2.3.4:443 (an IPv6 without brackets has more than one ":")
+			elseif(1 === substr_count($host, ':')) {
+				$host = explode(':', $host)[0];
 			}
-			return false;
+
+			return '' !== $host && false !== filter_var($host, FILTER_VALIDATE_IP);
 		});
 	}
 
